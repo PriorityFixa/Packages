@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amani Wanjiru — Speaker & Executive Coach</title>
+    <meta name="description" content="Book coaching, courses, and events with Amani Wanjiru — speaker and executive coach based in Nairobi.">
+
+    <!-- Analytics setup placeholder — replace G-XXXXXXX with a real GA4 ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXX');
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="config/business.js"></script>
+    <script src="config/branding.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/storefront.js"></script>
+    <script src="js/site.js"></script>
+    <script src="js/whatsapp.js"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="index.html" class="brand">
+            <span id="business-name">Amani Wanjiru</span>
+        </a>
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="catalogue.html">Catalogue</a>
+            <a href="cart.html">Cart <span id="cart-count">0</span></a>
+            <a href="https://wa.me/254712345678" class="btn add-to-cart" style="padding:0.5rem 1rem;">WhatsApp</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Helping leaders find their voice</h1>
+                <p class="hero-sub">
+                    Book a coaching session, join an upcoming training, or pick up a
+                    course — pay securely by M-Pesa.
+                </p>
+                <div class="hero-actions">
+                    <a href="catalogue.html" class="btn add-to-cart">Browse catalogue</a>
+                    <a href="#enquiry" class="btn btn-secondary">Send an enquiry</a>
+                </div>
+            </div>
+            <div class="hero-media">
+                <img src="https://picsum.photos/seed/heroamani/800/1000" alt="Speaking on stage at a conference">
+            </div>
+        </section>
+
+        <section class="onepage-section" id="gallery">
+            <h2>From the stage</h2>
+            <div class="gallery-grid">
+                <figure class="gallery-item">
+                    <img src="https://picsum.photos/seed/gallery1/700/900" alt="Opening keynote" loading="lazy">
+                    <figcaption>Opening keynote, Leadership Summit</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="https://picsum.photos/seed/gallery2/900/700" alt="Workshop session" loading="lazy">
+                    <figcaption>Workshop breakout session</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="https://picsum.photos/seed/gallery3/900/600" alt="Q&A with attendees" loading="lazy">
+                    <figcaption>Q&amp;A with attendees</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <div class="section-heading">
+                <h2>Coaching, courses &amp; trainings</h2>
+                <a href="catalogue.html" class="section-link">Full catalogue</a>
+            </div>
+            <div id="featured-product-grid" class="product-grid"></div>
+        </section>
+
+        <section class="onepage-section" id="enquiry">
+            <h2>Have a question first?</h2>
+            <p>Send an enquiry and get a reply within one business day.</p>
+
+            <form id="enquiry-form" class="checkout-form-container" style="padding:1.5rem;max-width:520px;">
+
+                <div class="form-group">
+                    <label for="enquiry-name">Full name</label>
+                    <input type="text" id="enquiry-name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="enquiry-phone">Phone number</label>
+                    <input type="tel" id="enquiry-phone" placeholder="07XXXXXXXX" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="enquiry-email">Email address</label>
+                    <input type="email" id="enquiry-email" placeholder="you@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="enquiry-message">Message</label>
+                    <textarea id="enquiry-message" rows="4"></textarea>
+                </div>
+
+                <button type="submit" class="btn add-to-cart">Send enquiry</button>
+
+                <p class="enquiry-note">
+                    Submitting opens WhatsApp with your enquiry pre-filled —
+                    see js/whatsapp.js for where that call goes.
+                </p>
+
+            </form>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p><span id="footer-business-name">Amani Wanjiru</span></p>
+        <p>Speaking, coaching &amp; workshops · Nairobi, Kenya</p>
+    </footer>
+
+    <a href="https://wa.me/254712345678" class="whatsapp-float" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">💬</a>
+
+</body>
+</html>
