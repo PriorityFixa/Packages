@@ -1,0 +1,189 @@
+/* =========================================================
+   SAKWA WANGARA — SITE SCRIPTS
+   =========================================================
+   1. Mobile nav toggle
+   2. Training enquiry form -> WhatsApp click-to-chat
+   ========================================================= */
+
+document.addEventListener('DOMContentLoaded', function () {
+
+    /* =====================================================
+       MOBILE NAV TOGGLE
+       (menu-toggle / nav-links already have CSS for this,
+       just wiring the click behaviour)
+    ===================================================== */
+
+    var menuToggle = document.getElementById('menuToggle');
+    var navLinks = document.getElementById('navLinks');
+
+    if (menuToggle && navLinks) {
+
+        menuToggle.addEventListener('click', function () {
+
+            var isOpen = navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active', isOpen);
+            menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+
+        // Close the menu after tapping a link (nice on mobile)
+        navLinks.querySelectorAll('a').forEach(function (link) {
+
+            link.addEventListener('click', function () {
+
+                navLinks.classList.remove('active');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
+
+
+    /* =====================================================
+       TRAINING ENQUIRY FORM -> WHATSAPP + EMAIL (both, on submit)
+       Uses the phone/email the visitor already enters in the
+       form. One submit fires both channels — no separate
+       buttons needed.
+    ===================================================== */
+
+    // WhatsApp number to receive enquiries (international format,
+    // digits only, no "+" and no leading zero).
+    var WHATSAPP_NUMBER = '254739685458';
+
+    // Email address enquiries go to. Replace with your real address.
+    var ENQUIRY_EMAIL = 'youremail@example.com'; // TODO: replace this
+
+    var form = document.getElementById('trainingEnquiryForm');
+    var formStatus = document.getElementById('formStatus');
+
+    if (form) {
+
+        form.addEventListener('submit', function (event) {
+
+            event.preventDefault();
+
+            // ---- Native HTML5 validation first ----
+            // (name / organisation / email / trainingProgramme are
+            // "required" in the markup — respect that before we
+            // build anything.)
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            var data = new FormData(form);
+
+            var name = (data.get('name') || '').trim();
+            var organisation = (data.get('organisation') || '').trim();
+            var visitorEmail = (data.get('email') || '').trim();
+            var visitorPhone = (data.get('phone') || '').trim();
+            var programme = (data.get('trainingProgramme') || '').trim();
+            var participants = (data.get('participants') || '').trim();
+            var preferredDate = (data.get('preferredDate') || '').trim();
+            var message = (data.get('message') || '').trim();
+
+            // ---- Build a readable enquiry message (shared by both) ----
+            var lines = [];
+
+            lines.push('New Training Enquiry — Sakwa Wangara website');
+            lines.push('');
+            lines.push('Name: ' + name);
+            lines.push('Organisation: ' + organisation);
+            lines.push('Email: ' + visitorEmail);
+
+            if (visitorPhone) {
+                lines.push('Phone: ' + visitorPhone);
+            }
+
+            lines.push('Training Programme: ' + programme);
+
+            if (participants) {
+                lines.push('Number of Participants: ' + participants);
+            }
+
+            if (preferredDate) {
+                lines.push('Preferred Date: ' + formatDate(preferredDate));
+            }
+
+            if (message) {
+                lines.push('');
+                lines.push('Message:');
+                lines.push(message);
+            }
+
+            // ---- 1. Open WhatsApp with the pre-filled message ----
+            var waText = lines.join('\n');
+
+            var waUrl =
+                'https://wa.me/' +
+                WHATSAPP_NUMBER +
+                '?text=' +
+                encodeURIComponent(waText);
+
+            window.open(waUrl, '_blank', 'noopener');
+
+            // ---- 2. Trigger the visitor's email app, pre-filled ----
+            // Uses a short delay so the WhatsApp tab opens cleanly
+            // before the mail-client handoff happens in this tab.
+            var subject = 'Training Enquiry from ' + (organisation || name);
+            var body = lines.join('\r\n');
+
+            var mailtoUrl =
+                'mailto:' +
+                ENQUIRY_EMAIL +
+                '?subject=' + encodeURIComponent(subject) +
+                '&body=' + encodeURIComponent(body);
+
+            window.setTimeout(function () {
+                window.location.href = mailtoUrl;
+            }, 300);
+
+            // ---- Let the visitor know what just happened ----
+            showStatus(
+                'success',
+                'WhatsApp is opening in a new tab and your email app is opening too — ' +
+                'both with your enquiry pre-filled. Just hit Send in each to reach us. ' +
+                'If either didn\'t open, message us on WhatsApp or email ' +
+                ENQUIRY_EMAIL + ' directly.'
+            );
+
+            form.reset();
+        });
+    }
+
+    function showStatus(type, msg) {
+
+        if (!formStatus) {
+            return;
+        }
+
+        formStatus.textContent = msg;
+        formStatus.classList.remove('success', 'error');
+        formStatus.classList.add('show', type);
+    }
+
+    function formatDate(isoDate) {
+
+        // isoDate comes from <input type="date"> as YYYY-MM-DD
+        var parts = isoDate.split('-');
+
+        if (parts.length !== 3) {
+            return isoDate;
+        }
+
+        var d = new Date(
+            parseInt(parts[0], 10),
+            parseInt(parts[1], 10) - 1,
+            parseInt(parts[2], 10)
+        );
+
+        if (isNaN(d.getTime())) {
+            return isoDate;
+        }
+
+        return d.toLocaleDateString('en-GB', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+    }
+});
