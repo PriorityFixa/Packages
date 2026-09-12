@@ -1,23 +1,19 @@
 /* =========================================================
-   MOCK DASHBOARD DATA
-   Replace with real reads from the orders/payments/bookings
-   tables once the backend exists.
-========================================================= */
+   DASHBOARD — LIVE ORDERS
+   =========================================================
+   Pulls real orders from the Worker API (GET /orders) instead
+   of mock data. Bookings and enquiries have no backend yet, so
+   those two stat cards stay as "—" until those exist.
+   ========================================================= */
 
-const DASHBOARD_STATS = [
-    { label: "Revenue this month", value: "KES 186,400" },
-    { label: "Orders & registrations", value: "37" },
-    { label: "Upcoming bookings", value: "9" },
-    { label: "Open enquiries", value: "4" }
-];
+const API_URL =
+    "https://priorityfixa-income-api.priorityfixa.workers.dev";
 
-const RECENT_ACTIVITY = [
-    { name: "Grace Mwangi", type: "Event seat — Leadership Summit 2026", amount: "KES 3,500", status: "paid" },
-    { name: "Peter Otieno", type: "1:1 coaching session (60 min)", amount: "KES 4,500", status: "paid" },
-    { name: "Achieng Odhiambo", type: "Booking — 18 Sep, 9:00 AM", amount: "—", status: "pending" },
-    { name: "John Kiptoo", type: "Leadership masterclass (video course)", amount: "KES 6,000", status: "failed" },
-    { name: "Wanjiku Ndegwa", type: "Team workshop (half-day)", amount: "KES 45,000", status: "paid" }
-];
+
+/* =========================
+   WORKFLOW TOGGLES (still mock —
+   no backend exists for these yet)
+========================= */
 
 const WORKFLOWS = [
     {
@@ -52,10 +48,73 @@ const WORKFLOWS = [
 
 
 /* =========================
+   FETCH ORDERS
+========================= */
+
+async function fetchOrders() {
+
+    const response = await fetch(`${API_URL}/orders`, {
+        method: "GET",
+        cache: "no-store"
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+        throw new Error(result.error || "Could not load orders.");
+    }
+
+    return result.orders || [];
+}
+
+
+/* =========================
+   STATUS HELPERS
+========================= */
+
+function orderStatusPill(order) {
+
+    if (order.paymentStatus === "PAID") {
+        return "paid";
+    }
+
+    if (order.paymentStatus === "FAILED") {
+        return "failed";
+    }
+
+    return "pending";
+}
+
+function isThisMonth(isoDate) {
+
+    const d = new Date(isoDate);
+    const now = new Date();
+
+    return (
+        d.getFullYear() === now.getFullYear() &&
+        d.getMonth() === now.getMonth()
+    );
+}
+
+function describeItems(items) {
+
+    if (!Array.isArray(items) || items.length === 0) {
+        return "—";
+    }
+
+    if (items.length === 1) {
+        return items[0].name;
+    }
+
+    return `${items[0].name} +${items.length - 1} more`;
+}
+
+
+/* =========================
    RENDER STAT CARDS
 ========================= */
 
-function renderDashboardStats(targetId = "dashboard-stats") {
+function renderDashboardStats(orders, targetId = "dashboard-stats") {
 
     const container = document.getElementById(targetId);
 
@@ -63,7 +122,35 @@ function renderDashboardStats(targetId = "dashboard-stats") {
         return;
     }
 
-    container.innerHTML = DASHBOARD_STATS.map(stat => `
+    const paidThisMonth = orders.filter(
+        o => o.paymentStatus === "PAID" && isThisMonth(o.createdAt)
+    );
+
+    const revenueThisMonth = paidThisMonth.reduce(
+        (sum, o) => sum + Number(o.total || 0),
+        0
+    );
+
+    const stats = [
+        {
+            label: "Revenue this month",
+            value: formatPrice(revenueThisMonth)
+        },
+        {
+            label: "Orders & registrations",
+            value: String(orders.length)
+        },
+        {
+            label: "Upcoming bookings",
+            value: "—"
+        },
+        {
+            label: "Open enquiries",
+            value: "—"
+        }
+    ];
+
+    container.innerHTML = stats.map(stat => `
         <div class="stat-card">
             <span>${stat.label}</span>
             <strong>${stat.value}</strong>
@@ -76,7 +163,7 @@ function renderDashboardStats(targetId = "dashboard-stats") {
    RENDER ACTIVITY TABLE
 ========================= */
 
-function renderRecentActivity(targetId = "dashboard-activity") {
+function renderRecentActivity(orders, targetId = "dashboard-activity") {
 
     const container = document.getElementById(targetId);
 
@@ -84,14 +171,36 @@ function renderRecentActivity(targetId = "dashboard-activity") {
         return;
     }
 
-    const rows = RECENT_ACTIVITY.map(item => `
-        <tr>
-            <td>${item.name}</td>
-            <td>${item.type}</td>
-            <td>${item.amount}</td>
-            <td><span class="status-pill ${item.status}">${item.status}</span></td>
-        </tr>
-    `).join("");
+    if (orders.length === 0) {
+
+        container.innerHTML = `
+            <p class="dashboard-empty">No orders yet.</p>
+        `;
+
+        return;
+    }
+
+    const recent = orders.slice(0, 15);
+
+    const rows = recent.map(order => {
+
+        const status = orderStatusPill(order);
+
+        const amount =
+            status === "paid"
+                ? formatPrice(order.total)
+                : (status === "pending" ? formatPrice(order.total) : "—");
+
+        return `
+            <tr>
+                <td>${order.customer?.name || "—"}</td>
+                <td>${describeItems(order.items)}</td>
+                <td>${amount}</td>
+                <td><span class="status-pill ${status}">${status}</span></td>
+            </tr>
+        `;
+
+    }).join("");
 
     container.innerHTML = `
         <table class="dashboard-table">
@@ -144,9 +253,43 @@ function renderWorkflows(targetId = "dashboard-workflows") {
 }
 
 
-document.addEventListener("DOMContentLoaded", () => {
+/* =========================
+   INITIALIZE
+========================= */
 
-    renderDashboardStats();
-    renderRecentActivity();
+async function initializeDashboard() {
+
     renderWorkflows();
-});
+
+    const statsContainer = document.getElementById("dashboard-stats");
+    const activityContainer = document.getElementById("dashboard-activity");
+
+    try {
+
+        const orders = await fetchOrders();
+
+        renderDashboardStats(orders);
+        renderRecentActivity(orders);
+
+    } catch (error) {
+
+        console.error("DASHBOARD_LOAD_ERROR", error);
+
+        if (activityContainer) {
+
+            activityContainer.innerHTML = `
+                <p class="dashboard-empty">
+                    Could not load orders: ${error.message}
+                </p>
+            `;
+        }
+
+        if (statsContainer) {
+
+            statsContainer.innerHTML = "";
+        }
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", initializeDashboard);
