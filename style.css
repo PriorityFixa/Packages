@@ -1,0 +1,3227 @@
+/* =========================================================
+   SAKWA WANGARA
+   LEADERSHIP & CORPORATE TRAINER
+   =========================================================
+   STYLE:
+   Contemporary African / Executive / Editorial
+
+   FONTS:
+   Manrope = headings
+   DM Sans = body
+
+   PALETTE:
+   Ink       #17140F
+   Deep Ink  #0F0D0A
+   Soft Ink  #33291D
+   Brass     #B89452
+   Brass 2   #D4B878
+   Cream     #F5F1E9
+   Warm      #EAE3D6
+   White     #FFFFFF
+   Muted     #766F64
+   Border    #D9D1C3
+
+   FIX NOTES (v2):
+   This file has been corrected to match the ACTUAL markup in
+   index.html. The previous version was written for a more
+   deeply-nested wireframe (e.g. .hero-copy, .hero-image nested
+   inside .hero-content; .contact-intro / .footer-brand-left /
+   .footer-social wrappers) that does not exist in the real HTML,
+   which caused the hero image, program section, audience
+   section, contact section, footer and several captions/links
+   to break out of their intended layout. All fixes below are
+   flagged with "FIX:" comments.
+   ========================================================= */
+
+
+/* =========================================================
+   01. ROOT VARIABLES
+   ========================================================= */
+
+:root {
+
+    --ink: #17140F;
+    --ink-deep: #0F0D0A;
+    --ink-soft: #33291D;
+
+    --brass: #B89452;
+    --brass-light: #D4B878;
+    --brass-pale: #E8D9B9;
+
+    --cream: #F5F1E9;
+    --warm: #EAE3D6;
+    --paper: #FBF9F5;
+    --white: #FFFFFF;
+
+    --text: #24201A;
+    --text-soft: #625B51;
+    --text-muted: #766F64;
+
+    --border: #D9D1C3;
+    --border-dark: rgba(255,255,255,0.14);
+
+    --font-head: "Manrope", sans-serif;
+    --font-body: "DM Sans", sans-serif;
+
+    --container: 1240px;
+
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --radius-xl: 30px;
+
+    --shadow-sm:
+        0 8px 24px rgba(23, 20, 15, 0.06);
+
+    --shadow-md:
+        0 18px 50px rgba(23, 20, 15, 0.10);
+
+    --shadow-lg:
+        0 30px 80px rgba(23, 20, 15, 0.14);
+
+    --transition:
+        260ms cubic-bezier(.2,.8,.2,1);
+
+    /* FIX: shared "half gutter" used to center content inside
+       full-bleed sections (hero, program) without breaking their
+       edge-to-edge backgrounds. Replaces width:min(...)/margin-auto
+       on children that no longer exist in the markup. */
+    --edge: max(24px, calc((100% - var(--container)) / 2));
+}
+
+
+/* =========================================================
+   02. RESET
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    background: var(--paper);
+    color: var(--text);
+
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.7;
+
+    overflow-x: hidden;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+::selection {
+    background: var(--brass);
+    color: var(--white);
+}
+
+
+/* =========================================================
+   03. ACCESSIBILITY
+   ========================================================= */
+
+:focus-visible {
+    outline: 3px solid var(--brass);
+    outline-offset: 4px;
+}
+
+.skip-link {
+    position: fixed;
+    left: 20px;
+    top: -100px;
+    z-index: 9999;
+
+    padding: 12px 18px;
+
+    background: var(--ink);
+    color: var(--white);
+
+    border-radius: 6px;
+}
+
+.skip-link:focus {
+    top: 20px;
+}
+
+
+/* =========================================================
+   04. GLOBAL CONTAINER
+   ========================================================= */
+
+.container {
+    width: min(
+        calc(100% - 48px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+}
+
+
+/* =========================================================
+   05. HEADER
+   ========================================================= */
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    z-index: 1000;
+
+    background: rgba(251,249,245,0.94);
+
+    border-bottom: 1px solid rgba(23,20,15,0.08);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    transition:
+        background var(--transition),
+        box-shadow var(--transition);
+}
+
+.navbar {
+    width: min(
+        calc(100% - 48px),
+        var(--container)
+    );
+
+    min-height: 82px;
+
+    margin-inline: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+/* =========================================================
+   06. BRAND
+   ========================================================= */
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+
+    min-width: 0;
+}
+
+.logo-frame {
+    width: 48px;
+    height: 48px;
+
+    display: grid;
+    place-items: center;
+
+    flex: 0 0 48px;
+
+    border: 1px solid var(--brass);
+
+    background: var(--ink);
+
+    /* FIX: explicit overflow so a missing/odd-ratio logo image
+       (broken image icon + alt text) never spills out of the
+       48x48 frame. */
+    overflow: hidden;
+}
+
+.brand-logo {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    /* FIX: if images/logo.png 404s, hide the broken-image glyph
+       and alt text instead of letting it distort the frame. The
+       gold border + dark frame still reads as a placeholder mark. */
+    color: transparent;
+}
+
+/* FIX: the HTML wraps the brand text in a bare <span> containing
+   <strong>/<small> — the old .brand-text/.brand-name/.brand-title
+   classes were never present in the markup, so they matched
+   nothing. Target the real elements instead. */
+.brand > span:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.brand strong {
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 800;
+    line-height: 1.1;
+
+    letter-spacing: 0.02em;
+
+    color: var(--ink);
+}
+
+.brand small {
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+
+    color: var(--text-muted);
+}
+
+
+/* =========================================================
+   07. NAVIGATION
+   ========================================================= */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 30px;
+}
+
+.nav-links a {
+    position: relative;
+
+    padding: 8px 0;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 0.025em;
+
+    color: var(--text-soft);
+
+    transition:
+        color var(--transition);
+}
+
+.nav-links a:not(.nav-cta)::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 2px;
+
+    width: 100%;
+    height: 1px;
+
+    background: var(--brass);
+
+    transform: scaleX(0);
+    transform-origin: right;
+
+    transition:
+        transform var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--ink);
+}
+
+.nav-links a:not(.nav-cta):hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* FIX: "Book a Training" uses class="nav-cta" in the HTML, not
+   "btn btn-primary". That class had zero rules before, so the
+   link rendered as plain nav text instead of a CTA button. */
+.nav-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 42px;
+    padding: 10px 17px;
+
+    background: var(--ink);
+    color: var(--white) !important;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+
+    box-shadow: 0 10px 24px rgba(23,20,15,0.14);
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
+}
+
+.nav-cta:hover {
+    background: var(--brass);
+    color: var(--white) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(184,148,82,0.24);
+}
+
+
+/* =========================================================
+   08. MENU TOGGLE
+   ========================================================= */
+
+/* FIX: the button contains a plain "☰" character, not three
+   <span> bars, so the old span-based hamburger/X animation never
+   matched anything. Style the button itself instead. */
+.menu-toggle {
+    display: none;
+
+    width: 46px;
+    height: 46px;
+
+    padding: 0;
+
+    border: 1px solid var(--border);
+    background: var(--white);
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+    line-height: 1;
+    color: var(--ink);
+
+    transition: transform var(--transition), background var(--transition);
+}
+
+.menu-toggle.active {
+    background: var(--ink);
+    color: var(--white);
+    transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   09. BUTTONS
+   ========================================================= */
+
+.btn {
+    min-height: 50px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 13px 24px;
+
+    border: 1px solid transparent;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    letter-spacing: 0.035em;
+
+    text-transform: uppercase;
+
+    transition:
+        transform var(--transition),
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background: var(--ink);
+    color: var(--white);
+
+    box-shadow:
+        0 10px 24px rgba(23,20,15,0.14);
+}
+
+.btn-primary:hover {
+    background: var(--brass);
+
+    box-shadow:
+        0 14px 30px rgba(184,148,82,0.24);
+}
+
+.btn-outline {
+    border-color: var(--ink);
+
+    background: transparent;
+    color: var(--ink);
+}
+
+.btn-outline:hover {
+    background: var(--ink);
+    color: var(--white);
+}
+
+
+/* =========================================================
+   10. HERO
+   ========================================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 760px;
+
+    /* FIX: horizontal padding added (was 0), using --edge so the
+       gradient background + decorative circles stay full-bleed
+       while the content lines up with the rest of the page. */
+    padding:
+        150px var(--edge)
+        100px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--paper) 0%,
+            var(--cream) 58%,
+            var(--warm) 100%
+        );
+
+    overflow: hidden;
+
+    /* FIX: .hero-content and .hero-image are direct SIBLINGS in
+       the HTML (not nested inside one another), so the grid has
+       to live on .hero itself for them to sit side by side. */
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(420px, 0.95fr);
+    align-items: center;
+    gap: 80px;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    right: -210px;
+    top: 80px;
+
+    border: 1px solid rgba(184,148,82,0.22);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    left: -230px;
+    bottom: -160px;
+
+    border: 1px solid rgba(184,148,82,0.18);
+
+    transform: rotate(45deg);
+
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 720px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+
+    margin-bottom: 20px;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+
+    color: var(--brass);
+}
+
+.eyebrow::before {
+    content: "";
+
+    width: 34px;
+    height: 1px;
+
+    background: var(--brass);
+}
+
+.hero h1 {
+    max-width: 800px;
+
+    margin-bottom: 25px;
+
+    font-family: var(--font-head);
+
+    font-size:
+        clamp(48px, 6vw, 82px);
+
+    font-weight: 800;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.055em;
+
+    color: var(--ink);
+}
+
+.hero h1 span,
+.hero h1 strong {
+    color: var(--brass);
+}
+
+.hero-text {
+    max-width: 620px;
+
+    margin-bottom: 30px;
+
+    font-size:
+        clamp(17px, 1.6vw, 20px);
+
+    line-height: 1.7;
+
+    color: var(--text-soft);
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 13px;
+
+    margin-bottom: 20px;
+}
+
+/* FIX: styled the empty leading <span> as a small bullet dot,
+   and made the row flex so it sits inline with the label text. */
+.hero-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin: 0;
+
+    font-size: 12px;
+    line-height: 1.6;
+
+    color: var(--text-muted);
+}
+
+.hero-note span {
+    width: 6px;
+    height: 6px;
+    flex: 0 0 6px;
+
+    border-radius: 50%;
+    background: var(--brass);
+}
+
+
+/* =========================================================
+   11. HERO IMAGE
+   ========================================================= */
+
+.hero-image {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 580px;
+
+    margin-inline: auto;
+}
+
+.image-frame {
+    position: relative;
+
+    aspect-ratio: 4 / 5;
+
+    overflow: hidden;
+
+    background: var(--ink);
+
+    border: 1px solid rgba(23,20,15,0.12);
+
+    box-shadow: var(--shadow-lg);
+}
+
+.image-frame::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent 50%,
+            rgba(15,13,10,0.20) 100%
+        );
+
+    pointer-events: none;
+}
+
+.image-frame img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 700ms cubic-bezier(.2,.8,.2,1);
+}
+
+.image-frame:hover img {
+    transform: scale(1.035);
+}
+
+.hero-image::before {
+    content: "";
+
+    position: absolute;
+
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+
+    top: 24px;
+    left: 24px;
+
+    border: 1px solid var(--brass);
+}
+
+.floating-card {
+    position: absolute;
+
+    right: -35px;
+    bottom: 40px;
+
+    max-width: 250px;
+
+    padding: 20px 22px;
+
+    background: var(--ink);
+    color: var(--white);
+
+    box-shadow: var(--shadow-lg);
+
+    border-left: 4px solid var(--brass);
+}
+
+.floating-card strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-family: var(--font-head);
+
+    font-size: 14px;
+    font-weight: 800;
+
+    color: var(--brass-light);
+}
+
+.floating-card span {
+    display: block;
+
+    font-size: 12px;
+    line-height: 1.55;
+
+    color: rgba(255,255,255,0.72);
+}
+
+
+/* =========================================================
+   12. ORGANISATIONS
+   ========================================================= */
+
+.organisations {
+    position: relative;
+
+    padding: 32px 0;
+
+    background: var(--ink);
+
+    border-bottom:
+        1px solid rgba(255,255,255,0.06);
+
+    overflow: hidden;
+}
+
+.organisations-heading {
+    width: min(
+        calc(100% - 48px),
+        var(--container)
+    );
+
+    margin: 0 auto 18px;
+
+    text-align: center;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,0.48);
+}
+
+.organisation-marquee {
+    width: 100%;
+
+    overflow: hidden;
+}
+
+.organisation-track {
+    width: max-content;
+
+    display: flex;
+    align-items: center;
+
+    animation:
+        organisationScroll 32s linear infinite;
+}
+
+.organisation-set {
+    display: flex;
+    align-items: center;
+
+    gap: 65px;
+
+    padding-right: 65px;
+}
+
+.organisation-item {
+    min-width: 120px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0.78;
+
+    transition:
+        opacity var(--transition);
+}
+
+.organisation-item:hover {
+    opacity: 1;
+}
+
+.organisation-item img {
+    width: auto;
+    max-width: 150px;
+    max-height: 48px;
+
+    object-fit: contain;
+
+    filter:
+        grayscale(1)
+        brightness(0)
+        invert(1);
+
+    opacity: 0.82;
+}
+
+@keyframes organisationScroll {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform:
+            translateX(-50%);
+    }
+}
+
+/* FIX: .organisations-note had no rules at all, so it rendered
+   with default black paragraph text on the dark .organisations
+   background (near-invisible). */
+.organisations-note {
+    width: min(
+        calc(100% - 48px),
+        var(--container)
+    );
+
+    margin: 20px auto 0;
+
+    text-align: center;
+
+    font-size: 12px;
+    line-height: 1.6;
+
+    color: rgba(255,255,255,0.45);
+}
+
+
+/* =========================================================
+   13. GLOBAL SECTION
+   ========================================================= */
+
+.section {
+    position: relative;
+
+    padding: 115px 0;
+}
+
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 18px;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+
+    color: var(--brass);
+}
+
+.section-label::before {
+    content: "";
+
+    width: 30px;
+    height: 1px;
+
+    background: var(--brass);
+}
+
+.section-heading {
+    max-width: 780px;
+
+    margin-bottom: 50px;
+}
+
+.section-heading .eyebrow {
+    margin-bottom: 14px;
+}
+
+.section-heading h2 {
+    margin-bottom: 18px;
+
+    font-family: var(--font-head);
+
+    font-size:
+        clamp(38px, 4.8vw, 62px);
+
+    font-weight: 800;
+
+    line-height: 1.02;
+
+    letter-spacing: -0.045em;
+
+    color: var(--ink);
+}
+
+/* FIX: none of the two-tone "span inside h2" headings (services,
+   program, approach, audience, contact, gallery) had a rule
+   giving the <span> portion its brass accent colour. Only the
+   hero h1 span was covered before. */
+.section-heading h2 span,
+.large-text span,
+.program-content h2 span,
+.approach-heading h2 span,
+.audience-inner h2 span,
+.contact-content h2 span {
+    color: var(--brass);
+}
+
+.section-heading p {
+    max-width: 680px;
+
+    margin: 0;
+
+    font-size: 17px;
+    line-height: 1.75;
+
+    color: var(--text-soft);
+}
+
+
+/* =========================================================
+   14. INTRO / ABOUT
+   ========================================================= */
+
+.intro {
+    background: var(--paper);
+}
+
+.intro-grid {
+    width: min(
+        calc(100% - 48px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(300px, 0.95fr);
+
+    gap: 90px;
+
+    align-items: start;
+}
+
+.large-text {
+    margin: 0;
+
+    font-family: var(--font-head);
+
+    font-size:
+        clamp(32px, 4vw, 55px);
+
+    font-weight: 700;
+
+    line-height: 1.12;
+
+    letter-spacing: -0.04em;
+
+    color: var(--ink);
+}
+
+.intro-copy {
+    padding-top: 9px;
+}
+
+.intro-copy p {
+    margin-bottom: 20px;
+
+    font-size: 17px;
+    line-height: 1.8;
+
+    color: var(--text-soft);
+}
+
+/* FIX: the link text in the HTML already ends with a literal
+   "→" character. The old ::after also injected a second arrow,
+   so links like "Discuss your leadership needs →" rendered with
+   two arrows. Removed the generated arrow; animate on hover
+   instead via colour + letter-spacing. Also extended to the
+   service-card links, which use a plain <a> with no class. */
+.text-link,
+.service-card > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 12px;
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+
+    color: var(--ink);
+
+    transition:
+        color var(--transition),
+        gap var(--transition);
+}
+
+.text-link {
+    margin-top: 10px;
+}
+
+.service-card > a {
+    margin-top: auto;
+}
+
+.text-link:hover,
+.service-card > a:hover {
+    color: var(--brass);
+    gap: 12px;
+}
+
+.featured > a {
+    color: var(--white);
+}
+
+.featured > a:hover {
+    color: var(--brass-light);
+}
+
+
+/* =========================================================
+   15. SERVICES
+   ========================================================= */
+
+.services {
+    background: var(--cream);
+}
+
+.service-grid {
+    width: min(
+        calc(100% - 48px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.service-card {
+    position: relative;
+
+    min-height: 330px;
+
+    padding: 32px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    transition:
+        transform var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.service-card:hover {
+    transform: translateY(-7px);
+
+    border-color: rgba(184,148,82,0.55);
+
+    box-shadow: var(--shadow-md);
+}
+
+.service-card.featured {
+    background: var(--ink);
+    color: var(--white);
+
+    border-color: var(--ink);
+
+    grid-column: span 2;
+}
+
+.service-number {
+    margin-bottom: 42px;
+
+    font-family: var(--font-head);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+
+    color: var(--brass);
+}
+
+.service-icon {
+    width: 46px;
+    height: 46px;
+
+    display: grid;
+    place-items: center;
+
+    margin-bottom: 20px;
+
+    border: 1px solid var(--border);
+
+    font-size: 18px;
+
+    color: var(--brass);
+}
+
+.featured .service-icon {
+    border-color:
+        rgba(255,255,255,0.15);
+}
+
+.service-card h3 {
+    margin-bottom: 13px;
+
+    font-family: var(--font-head);
+
+    font-size: 24px;
+    font-weight: 800;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.025em;
+
+    color: var(--ink);
+}
+
+.featured h3 {
+    color: var(--white);
+}
+
+.service-card p {
+    margin-bottom: 24px;
+
+    font-size: 15px;
+    line-height: 1.7;
+
+    color: var(--text-soft);
+}
+
+.featured p {
+    color: rgba(255,255,255,0.68);
+}
+
+
+/* =========================================================
+   16. PROGRAMME
+   ========================================================= */
+
+.program {
+    position: relative;
+
+    background: var(--ink);
+    color: var(--white);
+
+    /* FIX: .program had no grid/flex at all before, so
+       .program-image and .program-content (which sit side by
+       side by design) just stacked full-width, one under the
+       other, edge to edge. */
+    display: grid;
+    grid-template-columns:
+        minmax(0, 0.95fr)
+        minmax(0, 1.05fr);
+    align-items: center;
+    gap: 70px;
+
+    padding-left: var(--edge);
+    padding-right: var(--edge);
+}
+
+.program::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 50%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent 0%,
+            rgba(184,148,82,0.06) 100%
+        );
+
+    pointer-events: none;
+}
+
+.program-image {
+    position: relative;
+    z-index: 2;
+
+    overflow: hidden;
+
+    background: var(--ink-soft);
+
+    border: 1px solid
+        rgba(255,255,255,0.08);
+}
+
+.program-image img {
+    width: 100%;
+    height: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+
+    transition:
+        transform 700ms cubic-bezier(.2,.8,.2,1);
+}
+
+.program-image:hover img {
+    transform: scale(1.035);
+}
+
+.program-content {
+    position: relative;
+    z-index: 2;
+}
+
+.program-content .eyebrow {
+    color: var(--brass-light);
+}
+
+.program-content h2 {
+    max-width: 700px;
+
+    margin-bottom: 20px;
+
+    font-family: var(--font-head);
+
+    font-size:
+        clamp(38px, 4.5vw, 62px);
+
+    font-weight: 800;
+
+    line-height: 1.02;
+
+    letter-spacing: -0.045em;
+
+    color: var(--white);
+}
+
+.program-content > p {
+    max-width: 650px;
+
+    margin-bottom: 28px;
+
+    font-size: 17px;
+    line-height: 1.75;
+
+    color: rgba(255,255,255,0.68);
+}
+
+.program-points {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 13px;
+
+    margin-bottom: 30px;
+}
+
+/* FIX: .program-points targeted "li" but the HTML uses plain
+   <div>s (with a leading <strong>01</strong> + <span>text</span>),
+   not a <ul>/<li> list, so none of this ever applied. Restyled
+   around the real markup and used the real number instead of a
+   generated checkmark. */
+.program-points > div {
+    position: relative;
+
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+
+    padding:
+        16px
+        16px
+        16px
+        44px;
+
+    border: 1px solid
+        rgba(255,255,255,0.10);
+
+    background:
+        rgba(255,255,255,0.025);
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    color: rgba(255,255,255,0.82);
+}
+
+.program-points > div strong {
+    position: absolute;
+
+    left: 15px;
+    top: 16px;
+
+    font-family: var(--font-head);
+    font-size: 12px;
+    font-weight: 800;
+
+    color: var(--brass-light);
+}
+
+
+/* =========================================================
+   17. APPROACH
+   ========================================================= */
+
+.approach {
+    background: var(--paper);
+}
+
+.approach-heading {
+    width: min(
+        calc(100% - 48px),
+        var(--container)
+    );
+
+    margin: 0 auto 55px;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(280px, 0.75fr);
+
+    gap: 80px;
+
+    align-items: end;
+}
+
+.approach-heading h2 {
+    margin: 0;
+
+    font-family: var(--font-head);
+
+    font-size:
+        clamp(38px, 4.8vw, 60px);
+
+    font-weight: 800;
+
+    line-height: 1.02;
+
+    letter-spacing: -0.045em;
+
+    color: var(--ink);
+}
+
+.approach-heading p {
+    margin: 0;
+
+    font-size: 16px;
+    line-height: 1.75;
+
+    color: var(--text-soft);
+}
+
+.approach-grid {
+    width: min(
+        calc(100% - 48px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, minmax(0, 1fr));
+
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+}
+
+.approach-item {
+    min-height: 275px;
+
+    padding: 28px 24px;
+
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+
+    transition:
+        background var(--transition),
+        transform var(--transition);
+}
+
+.approach-item:hover {
+    background: var(--cream);
+}
+
+.approach-item span {
+    display: block;
+
+    margin-bottom: 55px;
+
+    font-family: var(--font-head);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.10em;
+
+    color: var(--brass);
+}
+
+.approach-item h3 {
+    margin-bottom: 12px;
+
+    font-family: var(--font-head);
+
+    font-size: 21px;
+    font-weight: 800;
+
+    color: var(--ink);
+}
+
+.approach-item p {
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 1.7;
+
+    color: var(--text-soft);
+}
+
+
+/* =========================================================
+   18. TRAINING GALLERY
+   ========================================================= */
+
+.gallery {
+    background: var(--cream);
+}
+
+.training-gallery {
+    width: min(
+        calc(100% - 48px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.6fr)
+        minmax(260px, 0.75fr);
+
+    grid-template-rows:
+        280px 280px;
+
+    gap: 16px;
+}
+
+.training-gallery-main {
+    position: relative;
+
+    grid-row: 1 / 3;
+
+    min-height: 580px;
+
+    overflow: hidden;
+
+    background: var(--ink);
+}
+
+.training-gallery-side,
+.training-gallery-small {
+    position: relative;
+
+    overflow: hidden;
+
+    background: var(--ink);
+}
+
+.training-gallery-main img,
+.training-gallery-side img,
+.training-gallery-small img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+        transform 700ms cubic-bezier(.2,.8,.2,1);
+}
+
+.training-gallery-main:hover img,
+.training-gallery-side:hover img,
+.training-gallery-small:hover img {
+    transform: scale(1.04);
+}
+
+.training-gallery-main::after,
+.training-gallery-side::after,
+.training-gallery-small::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(15,13,10,0.72),
+            transparent 55%
+        );
+
+    pointer-events: none;
+}
+
+/* FIX: only .gallery-overlay existed before. The other two tiles
+   use .side-caption / .small-caption in the HTML — classes that
+   had zero CSS, so their captions rendered as unstyled text
+   pushed below the image instead of as an absolute-positioned
+   overlay bar. All three are unified here. */
+.gallery-overlay,
+.side-caption,
+.small-caption {
+    position: absolute;
+    z-index: 2;
+
+    left: 22px;
+    right: 22px;
+    bottom: 20px;
+}
+
+.gallery-caption,
+.side-caption,
+.small-caption {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.gallery-caption > span,
+.side-caption > span,
+.small-caption > span {
+    font-family: var(--font-head);
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1;
+
+    color: var(--brass-light);
+}
+
+.gallery-overlay strong,
+.side-caption strong,
+.small-caption strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-family: var(--font-head);
+
+    font-size: 17px;
+    font-weight: 800;
+
+    color: var(--white);
+}
+
+.gallery-overlay small,
+.side-caption small {
+    display: block;
+
+    font-size: 12px;
+    font-weight: 400;
+
+    color: rgba(255,255,255,0.72);
+}
+
+.gallery-statement {
+    width: min(
+        calc(100% - 48px),
+        var(--container)
+    );
+
+    margin: 50px auto 0;
+
+    max-width: 880px;
+
+    text-align: center;
+
+    font-family: var(--font-head);
+
+    font-size:
+        clamp(26px, 3.4vw, 42px);
+
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.035em;
+
+    color: var(--ink);
+}
+
+/* FIX: the statement text sits inside a <p>, which still had its
+   default browser bottom margin (nothing in the reset zeroed it
+   for nested paragraphs here), adding stray extra space. */
+.gallery-statement p {
+    margin: 0;
+}
+
+.gallery-statement strong {
+    color: var(--brass);
+}
+
+/* FIX: .gallery-line was an empty <span> with no rules, i.e.
+   invisible. Given it a small decorative bar matching the
+   African-inspired accent used elsewhere on the page. */
+.gallery-line {
+    display: block;
+
+    width: 48px;
+    height: 4px;
+
+    margin: 0 auto 24px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--brass) 0 33%,
+            transparent 33% 66%,
+            var(--brass) 66% 100%
+        );
+}
+
+
+/* =========================================================
+   19. AUDIENCE
+   ========================================================= */
+
+.audience {
+    background: var(--ink);
+
+    color: var(--white);
+}
+
+/* FIX: .audience-inner has FOUR flat children in the HTML
+   (.eyebrow, h2, p, .audience-list) instead of the two wrapper
+   divs the old 2-column grid assumed, which threw them into a
+   broken 2x2 auto-placed grid. Explicit placement recreates the
+   intended "text block left, tag list right" layout. */
+.audience-inner {
+    width: min(
+        calc(100% - 48px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+
+    display: grid;
+    grid-template-columns:
+        minmax(0, 0.85fr)
+        minmax(0, 1.15fr);
+    grid-template-rows: auto auto auto;
+
+    column-gap: 90px;
+    row-gap: 14px;
+
+    align-items: center;
+}
+
+.audience-inner > .eyebrow {
+    grid-column: 1;
+    grid-row: 1;
+
+    color: var(--brass-light);
+}
+
+.audience-inner > h2 {
+    grid-column: 1;
+    grid-row: 2;
+
+    margin-bottom: 0;
+
+    font-family: var(--font-head);
+
+    font-size:
+        clamp(38px, 4.6vw, 58px);
+
+    font-weight: 800;
+
+    line-height: 1.03;
+
+    letter-spacing: -0.045em;
+
+    color: var(--white);
+}
+
+.audience-inner > p {
+    grid-column: 1;
+    grid-row: 3;
+
+    align-self: start;
+
+    max-width: 550px;
+
+    margin: 0;
+
+    font-size: 16px;
+    line-height: 1.75;
+
+    color: rgba(255,255,255,0.65);
+}
+
+.audience-list {
+    grid-column: 2;
+    grid-row: 1 / 4;
+
+    align-self: center;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 11px;
+}
+
+.audience-list span {
+    display: inline-block;
+
+    padding: 13px 17px;
+
+    border: 1px solid
+        rgba(255,255,255,0.13);
+
+    background:
+        rgba(255,255,255,0.035);
+
+    font-size: 13px;
+    font-weight: 700;
+
+    color: rgba(255,255,255,0.82);
+
+    transition:
+        border-color var(--transition),
+        background var(--transition),
+        color var(--transition);
+}
+
+.audience-list span:hover {
+    border-color: var(--brass);
+
+    background:
+        rgba(184,148,82,0.10);
+
+    color: var(--brass-light);
+}
+
+
+/* =========================================================
+   20. CONTACT
+   ========================================================= */
+
+.contact {
+    background:
+        linear-gradient(
+            135deg,
+            var(--paper),
+            var(--cream)
+        );
+}
+
+/* FIX: .contact-content and .training-enquiry are SIBLINGS
+   directly inside <section class="contact section">, not nested
+   inside one another — the old grid lived on .contact-content
+   only, so the form (a totally separate div) rendered full width
+   below everything, unstyled. The 2-column grid now lives on the
+   section itself. */
+.contact.section {
+    width: min(
+        calc(100% - 48px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+
+    display: grid;
+    grid-template-columns:
+        minmax(280px, 0.72fr)
+        minmax(0, 1.28fr);
+
+    gap: 70px;
+
+    align-items: start;
+}
+
+.contact-content {
+    position: sticky;
+    top: 120px;
+}
+
+.contact-content .eyebrow {
+    margin-bottom: 20px;
+}
+
+.contact-content h2 {
+    margin-bottom: 20px;
+
+    font-family: var(--font-head);
+
+    font-size:
+        clamp(38px, 4.5vw, 58px);
+
+    font-weight: 800;
+
+    line-height: 1.03;
+
+    letter-spacing: -0.045em;
+
+    color: var(--ink);
+}
+
+.contact-content > p {
+    max-width: 430px;
+
+    font-size: 16px;
+    line-height: 1.75;
+
+    color: var(--text-soft);
+}
+
+/* FIX: .contact-card in the HTML is the small "Trainer / Primary
+   Focus / Additional Programmes" info block (3 label+value
+   pairs) inside .contact-content — NOT the big white form card
+   the old CSS styled it as. Restyled to match its real content;
+   the form card role moved to .training-enquiry below. */
+.contact-card {
+    margin-top: 30px;
+
+    padding: 26px 28px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    background: var(--white);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.contact-card > div + div {
+    padding-top: 16px;
+
+    border-top: 1px solid var(--border);
+}
+
+.contact-card small {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    color: var(--text-muted);
+}
+
+.contact-card strong {
+    font-family: var(--font-head);
+
+    font-size: 15px;
+    font-weight: 700;
+
+    color: var(--ink);
+}
+
+/* FIX: .training-enquiry (the actual form wrapper in the HTML)
+   had no CSS at all, so the enquiry form rendered with no card
+   background, border or shadow. It now takes over the "white
+   card" treatment. */
+.training-enquiry {
+    padding: 38px;
+
+    background: var(--white);
+
+    border: 1px solid var(--border);
+
+    box-shadow: var(--shadow-md);
+}
+
+.form-heading {
+    margin-bottom: 28px;
+}
+
+.form-heading h3 {
+    margin-bottom: 7px;
+
+    font-family: var(--font-head);
+
+    font-size: 28px;
+    font-weight: 800;
+
+    letter-spacing: -0.03em;
+
+    color: var(--ink);
+}
+
+.form-heading p {
+    margin: 0;
+
+    font-size: 14px;
+
+    color: var(--text-muted);
+}
+
+
+/* =========================================================
+   21. FORM
+   ========================================================= */
+
+.enquiry-form {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+/* FIX: the HTML uses a single class "form-group-full", not two
+   separate classes "form-group full" — so the old ".form-group
+   .full" (two-class) selector never matched, and the message
+   field stayed one column wide instead of spanning the form. */
+.form-group-full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    color: var(--ink-soft);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 0;
+
+    background: var(--paper);
+    color: var(--ink);
+
+    font-size: 15px;
+
+    outline: none;
+
+    transition:
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
+}
+
+.form-group input,
+.form-group select {
+    height: 50px;
+}
+
+.form-group textarea {
+    min-height: 145px;
+
+    resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #9A9287;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+    border-color: #BDB3A4;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--brass);
+
+    background: var(--white);
+
+    box-shadow:
+        0 0 0 3px rgba(184,148,82,0.10);
+}
+
+/* FIX: the submit button + note sit inside a wrapper
+   <div class="form-submit form-group-full">, so the button is a
+   grandchild of .enquiry-form, not a direct grid item — the old
+   "grid-column:1/-1" on .enquiry-form .btn had no effect. The
+   wrapper itself now carries the placement + layout. */
+.form-submit {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+
+    margin-top: 5px;
+}
+
+.enquiry-form .btn {
+    width: fit-content;
+}
+
+.form-note {
+    margin: 0;
+
+    font-size: 11px;
+    line-height: 1.6;
+
+    color: var(--text-muted);
+}
+
+/* FIX: #formStatus sits OUTSIDE <form> (a sibling inside
+   .training-enquiry), so "grid-column:1/-1" was meaningless —
+   it's not a grid item. Given normal block spacing instead. */
+.form-status {
+    display: none;
+
+    margin-top: 18px;
+
+    padding: 14px 16px;
+
+    border: 1px solid var(--border);
+
+    background: var(--cream);
+
+    font-size: 13px;
+    line-height: 1.55;
+
+    color: var(--ink);
+}
+
+.form-status.show {
+    display: block;
+}
+
+.form-status.success {
+    border-color: rgba(71,130,91,0.35);
+
+    background: rgba(71,130,91,0.07);
+
+    color: #315D40;
+}
+
+.form-status.error {
+    border-color: rgba(170,70,60,0.30);
+
+    background: rgba(170,70,60,0.06);
+
+    color: #7A332D;
+}
+
+
+/* =========================================================
+   22. FOOTER
+   ========================================================= */
+
+.footer {
+    background: var(--ink-deep);
+
+    color: var(--white);
+
+    padding: 70px 0 25px;
+}
+
+/* FIX: centers every direct child of <footer> at the shared
+   container width. Replaces the old .footer-brand-left /
+   .footer-social wrappers, which don't exist in the HTML. */
+.footer > * {
+    width: min(
+        calc(100% - 48px),
+        var(--container)
+    );
+
+    margin-inline: auto;
+}
+
+/* FIX: .footer-brand in the HTML is just the logo + name/title,
+   two children (span.logo-frame + div) — not the old flex-between
+   layout with a paragraph and social icons nested inside it. */
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-bottom: 24px;
+}
+
+.footer-brand strong {
+    display: block;
+
+    font-family: var(--font-head);
+
+    font-size: 16px;
+    font-weight: 800;
+
+    color: var(--white);
+}
+
+.footer-brand small {
+    display: block;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,0.45);
+}
+
+/* FIX: the descriptive line is a plain <p>, a sibling of
+   .footer-brand, not nested inside a .footer-brand-left wrapper. */
+.footer > p {
+    max-width: 500px;
+
+    margin: 0 0 55px;
+
+    font-size: 14px;
+    line-height: 1.75;
+
+    color: rgba(255,255,255,0.55);
+}
+
+.footer-bottom {
+    padding-top: 22px;
+
+    border-top:
+        1px solid rgba(255,255,255,0.10);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    font-size: 11px;
+
+    color: rgba(255,255,255,0.38);
+}
+
+/* FIX: the LinkedIn/Instagram links sit in a plain <div> (no
+   .footer-social class) inside .footer-bottom. Styled as small
+   bordered buttons instead of default inline text links. */
+.footer-bottom > div {
+    display: flex;
+    gap: 10px;
+}
+
+.footer-bottom > div a {
+    padding: 9px 14px;
+
+    border: 1px solid
+        rgba(255,255,255,0.12);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    color: rgba(255,255,255,0.68);
+
+    transition:
+        border-color var(--transition),
+        color var(--transition),
+        background var(--transition);
+}
+
+.footer-bottom > div a:hover {
+    border-color: var(--brass);
+
+    background:
+        rgba(184,148,82,0.10);
+
+    color: var(--brass-light);
+}
+
+
+/* =========================================================
+   23. AFRICAN-INSPIRED DETAIL
+   =========================================================
+   Subtle geometric detail only.
+   It avoids turning the corporate site into a decorative
+   cultural theme.
+   ========================================================= */
+
+.section-heading::after {
+    content: "";
+
+    display: block;
+
+    width: 48px;
+    height: 4px;
+
+    margin-top: 28px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--brass) 0 33%,
+            transparent 33% 66%,
+            var(--brass) 66% 100%
+        );
+}
+
+
+/* =========================================================
+   24. IMAGE SAFETY
+   ========================================================= */
+
+.hero-image img,
+.program-image img,
+.training-gallery img {
+    background: var(--warm);
+}
+
+img[src=""],
+img:not([src]) {
+    visibility: hidden;
+}
+
+
+/* =========================================================
+   25. TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .navbar,
+    .intro-grid,
+    .service-grid,
+    .approach-heading,
+    .approach-grid,
+    .training-gallery,
+    .audience-inner,
+    .contact.section,
+    .footer > * {
+        width: min(
+            calc(100% - 40px),
+            1000px
+        );
+    }
+
+    .nav-links {
+        gap: 20px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(360px, 0.85fr);
+
+        gap: 55px;
+    }
+
+    .hero h1 {
+        font-size:
+            clamp(46px, 6vw, 70px);
+    }
+
+    .floating-card {
+        right: -15px;
+    }
+
+    .intro-grid {
+        gap: 55px;
+    }
+
+    .service-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .service-card.featured {
+        grid-column: span 2;
+    }
+
+    .program {
+        gap: 45px;
+    }
+
+    .approach-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+    .approach-item {
+        min-height: 250px;
+    }
+
+    .training-gallery {
+        grid-template-columns:
+            minmax(0, 1.3fr)
+            minmax(250px, 0.8fr);
+    }
+
+    .audience-inner {
+        column-gap: 50px;
+    }
+
+    .contact.section {
+        gap: 45px;
+    }
+}
+
+
+/* =========================================================
+   26. MOBILE NAVIGATION
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .site-header {
+        background:
+            rgba(251,249,245,0.98);
+    }
+
+    .navbar {
+        min-height: 72px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-links {
+        position: absolute;
+
+        top: calc(100% + 1px);
+        left: 0;
+        right: 0;
+
+        width: 100%;
+
+        padding: 20px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 2px;
+
+        background:
+            rgba(251,249,245,0.99);
+
+        border-bottom:
+            1px solid var(--border);
+
+        box-shadow:
+            0 18px 35px rgba(23,20,15,0.08);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform:
+            translateY(-10px);
+
+        transition:
+            opacity var(--transition),
+            visibility var(--transition),
+            transform var(--transition);
+    }
+
+    .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+
+        transform: translateY(0);
+    }
+
+    .nav-links a {
+        width: 100%;
+
+        padding: 13px 12px;
+
+        border-bottom:
+            1px solid rgba(23,20,15,0.06);
+    }
+
+    .nav-links a:last-child {
+        margin-top: 10px;
+
+        border-bottom: 0;
+    }
+
+    .nav-cta {
+        width: 100%;
+    }
+
+    .hero {
+        min-height: auto;
+
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+
+        padding-top: 125px;
+        padding-bottom: 80px;
+    }
+
+    .hero-content {
+        max-width: 760px;
+    }
+
+    .hero-image {
+        max-width: 620px;
+
+        margin-left: 0;
+    }
+
+    .image-frame {
+        aspect-ratio: 5 / 6;
+    }
+
+    .intro-grid {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .large-text {
+        max-width: 760px;
+    }
+
+    .program {
+        grid-template-columns: 1fr;
+    }
+
+    .approach-heading {
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+    }
+
+    .approach-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .training-gallery {
+        grid-template-columns: 1fr 1fr;
+
+        grid-template-rows:
+            380px 240px;
+    }
+
+    .training-gallery-main {
+        grid-column: 1 / -1;
+        grid-row: auto;
+
+        min-height: 380px;
+    }
+
+    .audience-inner {
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+    }
+
+    .audience-inner > .eyebrow {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .audience-inner > h2 {
+        grid-column: 1;
+        grid-row: 2;
+    }
+
+    .audience-inner > p {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .audience-list {
+        grid-column: 1;
+        grid-row: 4;
+    }
+
+    .contact.section {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .contact-content {
+        position: static;
+    }
+
+    .footer-brand {
+        flex-direction: row;
+    }
+}
+
+
+/* =========================================================
+   27. SMALL TABLET / LARGE PHONE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        font-size: 16px;
+    }
+
+    .container,
+    .navbar,
+    .intro-grid,
+    .service-grid,
+    .approach-heading,
+    .approach-grid,
+    .training-gallery,
+    .audience-inner,
+    .contact.section,
+    .footer > * {
+        width: min(
+            calc(100% - 32px),
+            100%
+        );
+    }
+
+    .section {
+        padding: 85px 0;
+    }
+
+    .hero {
+        padding-top: 115px;
+        padding-bottom: 70px;
+    }
+
+    .hero h1 {
+        font-size:
+            clamp(42px, 12vw, 62px);
+    }
+
+    .hero-text {
+        font-size: 16px;
+    }
+
+    .hero-buttons {
+        align-items: stretch;
+        flex-direction: column;
+
+        max-width: 360px;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+    }
+
+    .hero-image::before {
+        top: 14px;
+        left: 14px;
+    }
+
+    .floating-card {
+        right: 12px;
+        bottom: 20px;
+
+        max-width: 210px;
+
+        padding: 16px 17px;
+    }
+
+    .floating-card strong {
+        font-size: 12px;
+    }
+
+    .floating-card span {
+        font-size: 11px;
+    }
+
+    .organisation-set {
+        gap: 40px;
+
+        padding-right: 40px;
+    }
+
+    .organisation-item img {
+        max-width: 120px;
+        max-height: 40px;
+    }
+
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card.featured {
+        grid-column: auto;
+    }
+
+    .service-card {
+        min-height: 290px;
+
+        padding: 27px;
+    }
+
+    .service-number {
+        margin-bottom: 30px;
+    }
+
+    .program-points {
+        grid-template-columns: 1fr;
+    }
+
+    .training-gallery {
+        grid-template-columns: 1fr;
+
+        grid-template-rows:
+            390px
+            260px
+            260px;
+    }
+
+    .training-gallery-main {
+        grid-column: auto;
+
+        min-height: 390px;
+    }
+
+    .training-gallery-side,
+    .training-gallery-small {
+        min-height: 260px;
+    }
+
+    .approach-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .approach-item {
+        min-height: auto;
+
+        padding: 26px;
+    }
+
+    .approach-item span {
+        margin-bottom: 30px;
+    }
+
+    .training-enquiry {
+        padding: 27px 22px;
+    }
+
+    .contact-card {
+        padding: 22px 20px;
+    }
+
+    .enquiry-form {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group-full {
+        grid-column: auto;
+    }
+
+    .enquiry-form .btn {
+        width: 100%;
+    }
+
+    .footer {
+        padding-top: 55px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+    }
+}
+
+
+/* =========================================================
+   28. PHONE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+    .logo-frame {
+        width: 43px;
+        height: 43px;
+
+        flex-basis: 43px;
+    }
+
+    .brand strong {
+        font-size: 13px;
+    }
+
+    .brand small {
+        font-size: 8px;
+    }
+
+    .hero {
+        padding-top: 105px;
+    }
+
+    .hero h1 {
+        font-size:
+            clamp(39px, 12vw, 53px);
+
+        letter-spacing: -0.055em;
+    }
+
+    .hero-text {
+        line-height: 1.65;
+    }
+
+    .hero-image {
+        width: calc(100% - 8px);
+    }
+
+    .image-frame {
+        aspect-ratio: 4 / 5;
+    }
+
+    .floating-card {
+        right: 7px;
+        bottom: 15px;
+
+        max-width: 185px;
+    }
+
+    .section-heading h2,
+    .program-content h2,
+    .approach-heading h2,
+    .audience-inner > h2,
+    .contact-content h2 {
+        font-size:
+            clamp(34px, 10vw, 46px);
+    }
+
+    .large-text {
+        font-size:
+            clamp(30px, 9vw, 42px);
+    }
+
+    .section-heading {
+        margin-bottom: 35px;
+    }
+
+    .section-heading p {
+        font-size: 15px;
+    }
+
+    .service-card h3 {
+        font-size: 21px;
+    }
+
+    .program-content > p,
+    .audience-inner > p {
+        font-size: 15px;
+    }
+
+    .gallery-statement {
+        width: calc(100% - 32px);
+
+        margin-top: 35px;
+
+        font-size: 27px;
+    }
+
+    .audience-list {
+        gap: 8px;
+    }
+
+    .audience-list span {
+        padding: 10px 13px;
+
+        font-size: 12px;
+    }
+
+    .training-enquiry {
+        padding: 23px 18px;
+    }
+
+    .form-heading h3 {
+        font-size: 24px;
+    }
+}
+
+
+/* =========================================================
+   29. VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+        font-size: 37px;
+    }
+
+    .hero-buttons {
+        max-width: none;
+    }
+
+    .floating-card {
+        position: relative;
+
+        right: auto;
+        bottom: auto;
+
+        max-width: none;
+
+        margin-top: -20px;
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+
+    .hero-image::before {
+        display: none;
+    }
+
+    .training-gallery {
+        grid-template-rows:
+            320px
+            230px
+            230px;
+    }
+}
+
+
+/* =========================================================
+   30. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .organisation-track {
+        animation: none;
+    }
+}
+
+
+/* =========================================================
+   31. PRINT
+   ========================================================= */
+
+@media print {
+
+    .site-header,
+    .menu-toggle,
+    .hero-buttons,
+    .floating-card,
+    .organisation-marquee,
+    .footer-bottom > div {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .hero,
+    .section,
+    .organisations,
+    .footer,
+    .audience {
+        background: white !important;
+        color: black !important;
+    }
+
+    .hero {
+        padding-top: 30px;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
+/* =========================================================
+   32. ONE-PAGE SECTIONS (Amani Wanjiru layout)
+   ========================================================= 
+   FIX: .onepage-section / .onepage-section-alt had no rules
+   at all in this stylesheet, so their content sat flush
+   against the viewport edges (0 padding) while .hero — which
+   DOES have a rule — used --edge for its inset. This brings
+   every section's content in line with the hero.
+   ========================================================= */
+
+.onepage-section {
+    padding: 90px var(--edge);
+}
+
+.onepage-section-alt {
+    background: var(--cream);
+}
+
+.onepage-section h2 {
+    margin-bottom: 24px;
+
+    font-family: var(--font-head);
+    font-size: clamp(30px, 4vw, 44px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+}
+
+.onepage-section > p {
+    max-width: 680px;
+
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-soft);
+}
+
+.social-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.social-row a {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+}
+
+.social-row a:hover {
+    color: var(--brass);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 30px;
+}
+
+.gallery-item img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+}
+
+.gallery-item figcaption {
+    margin-top: 10px;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.map-embed {
+    width: 100%;
+    height: 360px;
+    margin-top: 24px;
+    border: 1px solid var(--border);
+}
+
+.checkout-form-container {
+    max-width: 520px;
+    margin-top: 24px;
+    background: var(--white);
+    border: 1px solid var(--border);
+}
+
+@media (max-width: 700px) {
+    .onepage-section {
+        padding: 60px var(--edge);
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* =========================================================
+   33. AMANI HEADER / NAV / FOOTER
+   ========================================================= */
+
+.site-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 82px;
+
+    padding-left: var(--edge);
+    padding-right: var(--edge);
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+}
+
+.main-nav a {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.025em;
+    color: var(--text-soft);
+    transition: color var(--transition);
+}
+
+.main-nav a:hover {
+    color: var(--ink);
+}
+
+.add-to-cart {
+    background: var(--ink);
+    color: var(--white) !important;
+    box-shadow: 0 10px 24px rgba(23,20,15,0.14);
+}
+
+.add-to-cart:hover {
+    background: var(--brass);
+}
+
+.btn-secondary {
+    border: 1px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+}
+
+.btn-secondary:hover {
+    background: var(--ink);
+    color: var(--white);
+}
+
+.site-footer {
+    padding: 50px var(--edge);
+    text-align: center;
+    background: var(--ink-deep);
+    color: rgba(255,255,255,0.65);
+}
+
+.site-footer p {
+    margin-bottom: 6px;
+    font-size: 13px;
+}
+
+.whatsapp-float {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 900;
+
+    width: 56px;
+    height: 56px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+    background: #25D366;
+    color: var(--white);
+    font-size: 26px;
+
+    box-shadow: var(--shadow-lg);
+}
+
+@media (max-width: 700px) {
+    .site-header {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .main-nav {
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .site-footer {
+        padding: 40px var(--edge);
+    }
+}
+}
