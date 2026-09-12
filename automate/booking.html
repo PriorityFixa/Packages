@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a session | Amani Wanjiru</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="config/business.js"></script>
+    <script src="config/branding.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/booking.js"></script>
+    <script src="js/site.js"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="index.html" class="brand">
+            <span id="business-name">Amani Wanjiru</span>
+        </a>
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="catalogue.html">Catalogue</a>
+            <a href="booking.html">Book a session</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="cart.html">Cart <span id="cart-count">0</span></a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="page-header">
+            <h1>Book a 1:1 session</h1>
+            <p>Pick a day and time that works for you — the slot is held as soon as you book.</p>
+        </section>
+
+        <section class="section">
+
+            <div id="availability"></div>
+
+            <div class="booking-form" id="booking-form-wrapper" hidden>
+
+                <p><strong>Selected:</strong> <span id="selected-slot-summary"></span></p>
+
+                <form id="booking-form">
+
+                    <div class="form-group">
+                        <label for="booking-name">Full name</label>
+                        <input type="text" id="booking-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="booking-phone">Phone number</label>
+                        <input type="tel" id="booking-phone" placeholder="07XXXXXXXX" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="booking-email">Email address</label>
+                        <input type="email" id="booking-email">
+                    </div>
+
+                    <button type="submit" class="btn add-to-cart">Confirm booking</button>
+
+                </form>
+
+            </div>
+
+            <div class="payment-status success" id="booking-confirmation" hidden style="max-width:560px;">
+                <div class="payment-status-content">
+                    <h3>✓ Booking confirmed</h3>
+                    <p>
+                        A confirmation has been sent, and a reminder will go out 24 hours
+                        before your session — see the Dashboard for workflow settings.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p><span id="footer-business-name">Amani Wanjiru</span></p>
+        <p>Speaking, coaching &amp; workshops · Nairobi, Kenya</p>
+    </footer>
+
+</body>
+</html>

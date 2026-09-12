@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogue | Amani Wanjiru</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="config/business.js"></script>
+    <script src="config/branding.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/storefront.js"></script>
+    <script src="js/site.js"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="index.html" class="brand">
+            <span id="business-name">Amani Wanjiru</span>
+        </a>
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="catalogue.html">Catalogue</a>
+            <a href="booking.html">Book a session</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="cart.html">Cart <span id="cart-count">0</span></a>
+            <a href="https://wa.me/254712345678" class="btn add-to-cart" style="padding:0.5rem 1rem;">WhatsApp</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="page-header">
+            <h1>Catalogue</h1>
+            <p>Coaching sessions, courses, and upcoming trainings — buy or reserve a seat below.</p>
+
+            <div class="view-toggle">
+                <button class="view-toggle-btn active" data-view="products">Products &amp; courses</button>
+                <button class="view-toggle-btn" data-view="events">Trainings &amp; events</button>
+            </div>
+        </section>
+
+        <section class="section" id="products-view">
+            <div id="product-grid" class="product-grid"></div>
+        </section>
+
+        <section class="section" id="events-view" hidden>
+            <div id="events-list" class="event-grid"></div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p><span id="footer-business-name">Amani Wanjiru</span></p>
+        <p>Speaking, coaching &amp; workshops · Nairobi, Kenya</p>
+    </footer>
+
+    <a href="https://wa.me/254712345678" class="whatsapp-float" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">💬</a>
+
+    <script>
+        document.querySelectorAll(".view-toggle-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                document.querySelectorAll(".view-toggle-btn").forEach(b => b.classList.remove("active"));
+                button.classList.add("active");
+                const showProducts = button.dataset.view === "products";
+                document.getElementById("products-view").hidden = !showProducts;
+                document.getElementById("events-view").hidden = showProducts;
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Amani Wanjiru</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="config/business.js"></script>
+    <script src="config/branding.js"></script>
+    <script src="js/products.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/checkout.js"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="index.html" class="brand">
+            <span id="business-name">Amani Wanjiru</span>
+        </a>
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="catalogue.html">Catalogue</a>
+            <a href="booking.html">Book a session</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="cart.html">Cart <span id="cart-count">0</span></a>
+            <a href="https://wa.me/254712345678" class="btn add-to-cart" style="padding:0.5rem 1rem;">WhatsApp</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="page-header">
+            <h1>Complete your order</h1>
+            <p>Enter your details and review your order before payment.</p>
+        </section>
+
+        <section class="section">
+            <div class="checkout-grid">
+
+                <div class="checkout-form-container">
+
+                    <h2>Customer details</h2>
+
+                    <form id="checkout-form">
+
+                        <div class="form-group">
+                            <label for="customer-name">Full name</label>
+                            <input type="text" id="customer-name" name="customerName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customer-phone">Phone number</label>
+                            <input type="tel" id="customer-phone" name="customerPhone" placeholder="07XXXXXXXX" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customer-email">Email address</label>
+                            <input type="email" id="customer-email" name="customerEmail" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customer-location">Location / delivery details</label>
+                            <textarea id="customer-location" name="customerLocation" rows="4"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn add-to-cart">Continue to payment</button>
+
+                    </form>
+
+                </div>
+
+                <aside class="checkout-summary" id="checkout-summary"></aside>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p><span id="footer-business-name">Amani Wanjiru</span></p>
+        <p>Speaking, coaching &amp; workshops · Nairobi, Kenya</p>
+    </footer>
+
+</body>
+</html>
