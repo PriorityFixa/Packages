@@ -311,14 +311,15 @@ async function checkPaymentStatus(
             "Checking payment status:",
             orderId
         );
-
-        const response =
-            await fetch(
-                `${API_URL}/orders/status?orderId=${encodeURIComponent(orderId)}`,
-                {
-                    method: "GET",
-                    cache: "no-store"
-                }
+const response =
+    await fetch(
+        `${API_URL}/payments/status/${encodeURIComponent(orderId)}`,
+        {
+            method: "GET",
+            cache: "no-store"
+        }
+    );
+        
             );
 
         const result =
