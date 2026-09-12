@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amani Wanjiru — Speaker & Executive Coach</title>
+    <meta name="description" content="Amani Wanjiru is a speaker and executive coach based in Nairobi, working with teams on communication, trust, and leadership.">
+
+    <!-- Basic SEO -->
+    <meta property="og:title" content="Amani Wanjiru — Speaker & Executive Coach">
+    <meta property="og:description" content="Speaking, coaching & workshops in Nairobi, Kenya.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="config/business.js"></script>
+    <script src="config/branding.js"></script>
+    <script src="js/site.js"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="#top" class="brand">
+            <span id="business-name">Amani Wanjiru</span>
+        </a>
+        <nav class="main-nav">
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+            <a id="nav-whatsapp" href="https://wa.me/254721478629" class="btn add-to-cart" style="padding:0.5rem 1rem;">WhatsApp</a>
+        </nav>
+
+    </header>
+
+    <main id="top">
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Helping leaders find their voice</h1>
+                <p class="hero-sub">
+                    Speaker and executive coach based in Nairobi, working with teams
+                    on communication, trust, and leading through change.
+                </p>
+                <div class="hero-actions">
+                    <a id="hero-whatsapp" href="https://wa.me/254721478629" class="btn add-to-cart">Chat on WhatsApp</a>
+                    <a href="tel:+254712345678" class="btn btn-secondary">Call now</a>
+                </div>
+            </div>
+            <div class="hero-media">
+                <img src="https://picsum.photos/seed/heroamani/800/1000" alt="Speaking on stage at a conference">
+            </div>
+        </section>
+
+        <section class="onepage-section" id="about">
+            <h2>About</h2>
+            <p>
+                Over the past ten years, Amani has worked with corporate teams, NGOs,
+                and universities across East Africa — helping leaders communicate with
+                more clarity, build trust in their teams, and speak confidently under
+                pressure. Sessions are practical, direct, and grounded in real stories,
+                not theory.
+            </p>
+            <div class="social-row">
+                <a href="https://instagram.com/">Instagram</a>
+                <a href="https://linkedin.com/">LinkedIn</a>
+                <a href="https://youtube.com/">YouTube</a>
+            </div>
+        </section>
+
+        <section class="onepage-section onepage-section-alt" id="gallery">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <figure class="gallery-item">
+                    <img src="https://picsum.photos/seed/gallery1/700/900" alt="Opening keynote" loading="lazy">
+                    <figcaption>Opening keynote, Leadership Summit</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="https://picsum.photos/seed/gallery2/900/700" alt="Workshop session" loading="lazy">
+                    <figcaption>Workshop breakout session</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="https://picsum.photos/seed/gallery3/900/600" alt="Q&A with attendees" loading="lazy">
+                    <figcaption>Q&amp;A with attendees</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="onepage-section" id="location">
+            <h2>Based in Nairobi</h2>
+            <p>Available for talks and workshops across Kenya and East Africa.</p>
+            <iframe
+                class="map-embed"
+                loading="lazy"
+                title="Location map"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=36.79%2C-1.30%2C36.83%2C-1.26&marker=-1.2833%2C36.8167"
+            ></iframe>
+        </section>
+
+        <section class="onepage-section onepage-section-alt" id="contact">
+            <h2>Get in touch</h2>
+            <p>Send an enquiry and expect a reply within one business day.</p>
+
+            <form id="enquiry-form" class="checkout-form-container" style="padding:1.5rem;max-width:520px;">
+
+    <div class="form-group">
+        <label for="enquiry-name">Full name</label>
+        <input type="text" id="enquiry-name" required>
+    </div>
+
+    <div class="form-group">
+        <label for="enquiry-phone">Phone number</label>
+        <input type="tel" id="enquiry-phone" placeholder="07XXXXXXXX" required>
+    </div>
+
+    <div class="form-group">
+        <label for="enquiry-email">Email address</label>
+        <input type="email" id="enquiry-email" placeholder="you@example.com">
+    </div>
+
+    <div class="form-group">
+        <label for="enquiry-message">Message</label>
+        <textarea id="enquiry-message" rows="4" placeholder="Tell us a bit about what you need"></textarea>
+    </div>
+
+    <button type="submit" class="btn add-to-cart">Send enquiry</button>
+
+    <p class="enquiry-note">
+        This sends your message straight to WhatsApp — no backend required.
+    </p>
+
+</form>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p><span id="footer-business-name">Amani Wanjiru</span></p>
+        <p>Speaking, coaching &amp; workshops · Nairobi, Kenya</p>
+    </footer>
+
+    <a
+        
+    id="whatsapp-float"
+    href="https://wa.me/254721478629"
+    class="whatsapp-float"
+    aria-label="Chat on WhatsApp"
+    title="Chat on WhatsApp"
+>💬</a>
+
+   <script>
+    // Single source of truth for the WhatsApp number.
+    // Change it here only — everything else updates automatically.
+    const WHATSAPP_NUMBER = '254721478629';
+
+    // Wire up the three static links (nav, hero, floating bubble)
+    // so they always match WHATSAPP_NUMBER above.
+    ['nav-whatsapp', 'hero-whatsapp', 'whatsapp-float'].forEach(function (id) {
+        const el = document.getElementById(id);
+        if (el) {
+            el.href = `https://wa.me/${WHATSAPP_NUMBER}`;
+        }
+    });
+
+    // Contact form: no backend in the Starter package, so it hands the
+    // enquiry straight to WhatsApp with a pre-filled message.
+    document.getElementById("enquiry-form").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById("enquiry-name").value.trim();
+        const phone = document.getElementById("enquiry-phone").value.trim();
+        const email = document.getElementById("enquiry-email").value.trim();
+        const message = document.getElementById("enquiry-message").value.trim();
+
+        let text = `Hi, my name is ${name} (${phone}).`;
+
+        if (email) {
+            text += `\nEmail: ${email}`;
+        }
+
+        text += `\n${message}`;
+
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
+    });
+</script>
+</body>
+</html>
