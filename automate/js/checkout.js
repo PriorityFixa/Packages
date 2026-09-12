@@ -320,7 +320,7 @@ const response =
         }
     );
         
-            );
+      
 
         const result =
             await response.json();
