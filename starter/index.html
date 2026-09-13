@@ -226,6 +226,83 @@
 
         window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
     });
+       // ================================
+// AI ASSISTANT
+// ================================
+
+const AI_WORKER_URL =
+    "https://priorityfixa-ai.priorityfixa.workers.dev/";
+
+const aiForm = document.getElementById("ai-chat-form");
+const aiQuestion = document.getElementById("ai-question");
+const aiMessages = document.getElementById("ai-messages");
+
+aiForm.addEventListener("submit", async function (event) {
+
+    event.preventDefault();
+
+    const question = aiQuestion.value.trim();
+
+    if (!question) return;
+
+    // Show customer's question
+    const userMessage = document.createElement("div");
+    userMessage.className = "ai-message ai-user";
+    userMessage.textContent = question;
+
+    aiMessages.appendChild(userMessage);
+
+    // Clear input
+    aiQuestion.value = "";
+
+    // Show loading message
+    const loadingMessage = document.createElement("div");
+    loadingMessage.className = "ai-message ai-bot";
+    loadingMessage.textContent = "Thinking...";
+
+    aiMessages.appendChild(loadingMessage);
+
+    try {
+
+        const response = await fetch(AI_WORKER_URL, {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                message: question
+            })
+
+        });
+
+        const data = await response.json();
+
+        loadingMessage.remove();
+
+        if (!response.ok) {
+            throw new Error(data.error || "AI request failed");
+        }
+
+        const aiMessage = document.createElement("div");
+        aiMessage.className = "ai-message ai-bot";
+        aiMessage.textContent = data.reply;
+
+        aiMessages.appendChild(aiMessage);
+
+    } catch (error) {
+
+        loadingMessage.textContent =
+            "Sorry, I couldn't connect right now. Please contact Amani on WhatsApp.";
+
+        console.error("AI Assistant Error:", error);
+    }
+
+    // Scroll to latest message
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+});
 </script>
 </body>
 </html>
