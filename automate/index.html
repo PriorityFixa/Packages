@@ -64,6 +64,64 @@
             </div>
         </section>
 
+        <!-- =========================================================
+             FEATURED EVENT PROMO
+             Deliberately pulled out of the regular events grid and
+             given an inverted (dark) treatment of the site's own
+             palette, so it reads as "different" without clashing
+             with the brand. Links to the real event on the catalogue
+             (evt-leadership-summit), so the CTA isn't a dead link.
+        ========================================================= -->
+
+        <section class="featured-event-promo">
+
+            <div class="featured-ribbon">Filling Fast</div>
+
+            <div class="featured-event-grid">
+
+                <div class="featured-event-copy">
+
+                    <span class="featured-event-label">★ Featured Training</span>
+
+                    <h2>Leadership Summit 2026</h2>
+
+                    <p class="featured-event-meta">14 Oct 2026 &middot; 9:00 AM &middot; Sarit Centre, Nairobi</p>
+
+                    <div class="countdown" id="featured-countdown">
+                        <div class="countdown-unit"><strong id="cd-days">--</strong><span>Days</span></div>
+                        <div class="countdown-unit"><strong id="cd-hours">--</strong><span>Hrs</span></div>
+                        <div class="countdown-unit"><strong id="cd-mins">--</strong><span>Mins</span></div>
+                        <div class="countdown-unit"><strong id="cd-secs">--</strong><span>Secs</span></div>
+                    </div>
+
+                    <div class="featured-seats">
+                        <div class="featured-seats-label">
+                            <span>Seats reserved</span>
+                            <strong>78% full &middot; 22 left</strong>
+                        </div>
+                        <div class="featured-seats-bar"><div class="featured-seats-bar-fill"></div></div>
+                    </div>
+
+                    <div class="featured-event-price">
+                        <span class="price-old">KES 5,000</span>
+                        <span class="price-new">KES 3,500</span>
+                        <span class="price-tag">Early bird</span>
+                    </div>
+
+                    <a href="event-detail.html?id=evt-leadership-summit" class="btn add-to-cart featured-event-cta">
+                        Reserve Your Seat
+                    </a>
+
+                </div>
+
+                <div class="featured-event-visual">
+                    <img src="https://picsum.photos/seed/summit/600/750" alt="Leadership Summit 2026">
+                </div>
+
+            </div>
+
+        </section>
+
         <section class="onepage-section" id="gallery">
             <h2>From the stage</h2>
             <div class="gallery-grid">
@@ -137,6 +195,26 @@
             alert("Enquiry captured (demo). Wire this to your enquiries endpoint.");
             event.target.reset();
         });
+
+        // Featured event countdown — update EVENT_DATE to match the real date.
+        const EVENT_DATE = new Date("2026-10-14T09:00:00+03:00").getTime();
+
+        function updateFeaturedCountdown() {
+            const diff = Math.max(0, EVENT_DATE - Date.now());
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((diff / (1000 * 60)) % 60);
+            const secs = Math.floor((diff / 1000) % 60);
+
+            document.getElementById("cd-days").textContent = days;
+            document.getElementById("cd-hours").textContent = String(hours).padStart(2, "0");
+            document.getElementById("cd-mins").textContent = String(mins).padStart(2, "0");
+            document.getElementById("cd-secs").textContent = String(secs).padStart(2, "0");
+        }
+
+        updateFeaturedCountdown();
+        setInterval(updateFeaturedCountdown, 1000);
     </script>
 
 </body>
