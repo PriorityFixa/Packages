@@ -18,7 +18,6 @@
 
     <meta name="theme-color" content="#F1EDE4">
 
-
     <!-- =====================================================
          SOCIAL / OPEN GRAPH
 
@@ -46,7 +45,6 @@
 
     <meta property="og:type" content="website">
 
-
     <!-- =====================================================
          GOOGLE ANALYTICS
 
@@ -59,7 +57,6 @@
              src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX">
          </script>
     ====================================================== -->
-
 
     <!-- =====================================================
          FONTS
@@ -77,15 +74,18 @@
     >
 
     <link
-        href="https://fonts.googleapis.com">
-
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&amp;family=Inter:wght@400;500;600&amp;display=swap"
+        rel="stylesheet"
+    >
 
     <!-- =====================================================
          STYLES
     ====================================================== -->
 
-    css/style.css
-
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
 
     <!-- =====================================================
          SITE CONFIGURATION & DATA
@@ -94,15 +94,15 @@
          executing the scripts.
     ====================================================== -->
 
-    config/business.jsscript>
-    config/branding.jsscript>
+    <script src="config/business.js" defer></script>
+    <script src="config/branding.js" defer></script>
 
-    js/products.jsscript>
-    js/events.jsscript>
+    <script src="js/products.js" defer></script>
+    <script src="js/events.js" defer></script>
 
-    js/cart.jsscript>
-    js/storefront.jsscript>
-    js/site.jsscript>
+    <script src="js/cart.js" defer></script>
+    <script src="js/storefront.js" defer></script>
+    <script src="js/site.js" defer></script>
 
 </head>
 
@@ -114,81 +114,60 @@
          ACCESSIBILITY
     ====================================================== -->
 
-    #main-content
+    <a href="#main-content" class="skip-link">
         Skip to main content
     </a>
 
 
     <!-- =====================================================
          HEADER
+
+         Added back in: the JavaScript at the bottom of this
+         file controls a mobile nav toggle via #nav-toggle and
+         #main-nav, but no header existed in the file to hold
+         them. This one matches the pages that actually exist
+         (catalogue.html, booking.html, cart.html).
     ====================================================== -->
 
-   <head>
-    <meta charset="UTF-8">
+    <header class="site-header">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+        <div class="header-inner">
 
-    <title>Amani Wanjiru | Speaker &amp; Executive Coach in Nairobi</title>
+            <a href="index.html" class="brand">
+                <span id="business-name">Amani Wanjiru</span>
+            </a>
 
-    <meta
-        name="description"
-        content="Executive coaching, leadership development, speaking and practical training with Amani Wanjiru in Nairobi and online."
-    >
+            <button
+                type="button"
+                id="nav-toggle"
+                class="nav-toggle"
+                aria-expanded="false"
+                aria-controls="main-nav"
+                aria-label="Open navigation"
+            >
+                <span aria-hidden="true">&#9776;</span>
+            </button>
 
-    <meta name="theme-color" content="#F1EDE4">
+            <nav id="main-nav" class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="catalogue.html">Catalogue</a>
+                <a href="booking.html">Book a session</a>
+                <a href="cart.html">
+                    Cart <span id="cart-count">0</span>
+                </a>
+                <a
+                    href="https://wa.me/254712345678"
+                    class="btn add-to-cart"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    WhatsApp
+                </a>
+            </nav>
 
-    <!-- Open Graph -->
-    <meta
-        property="og:title"
-        content="Amani Wanjiru | Speaker &amp; Executive Coach"
-    >
+        </div>
 
-    <meta
-        property="og:description"
-        content="Executive coaching, leadership development, speaking and practical training in Nairobi and online."
-    >
-
-    <meta property="og:type" content="website">
-
-    <!-- Fonts -->
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&amp;family=Inter:wght@400;500;600&amp;display=swap"
-        rel="stylesheet"
-    >
-
-    <!-- Main stylesheet -->
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
-
-    <!-- Configuration -->
-    <script src="config/business.js" defer></script>
-    config/branding.jsscript>
-
-    <!-- Data -->
-    js/products.jsscript>
-    js/events.jsscript>
-
-    <!-- Application -->
-    js/cart.jsscript>
-    js/storefront.jsscript>
-    js/site.jsscript>
-</head>
+    </header>
 
 
     <!-- =====================================================
@@ -207,7 +186,7 @@
             <div class="hero-content">
 
                 <span class="eyebrow">
-                    Executive Coaching · Leadership · Speaking
+                    Executive Coaching &middot; Leadership &middot; Speaking
                 </span>
 
                 <h1>
@@ -441,10 +420,10 @@
                     <p class="featured-event-meta">
 
                         <time datetime="2026-10-14T09:00:00+03:00">
-                            14 October 2026 · 9:00 AM
+                            14 October 2026 &middot; 9:00 AM
                         </time>
 
-                        · Sarit Centre, Nairobi
+                        &middot; Sarit Centre, Nairobi
 
                     </p>
 
@@ -544,7 +523,7 @@
                             </span>
 
                             <strong id="featured-seats-text">
-                                78% full · 22 seats remaining
+                                78% full &middot; 22 seats remaining
                             </strong>
 
                         </div>
@@ -719,7 +698,7 @@
                             class="testimonial-mark"
                             aria-hidden="true"
                         >
-                            “
+                            &ldquo;
                         </span>
 
                         <p class="testimonial-quote">
@@ -735,7 +714,7 @@
                                 </cite>
 
                                 <span class="testimonial-title">
-                                    Role · Organisation
+                                    Role &middot; Organisation
                                 </span>
 
                             </div>
@@ -751,7 +730,7 @@
                             class="testimonial-mark"
                             aria-hidden="true"
                         >
-                            “
+                            &ldquo;
                         </span>
 
                         <p class="testimonial-quote">
@@ -768,7 +747,7 @@
                                 </cite>
 
                                 <span class="testimonial-title">
-                                    Role · Organisation
+                                    Role &middot; Organisation
                                 </span>
 
                             </div>
@@ -784,7 +763,7 @@
                             class="testimonial-mark"
                             aria-hidden="true"
                         >
-                            “
+                            &ldquo;
                         </span>
 
                         <p class="testimonial-quote">
@@ -801,7 +780,7 @@
                                 </cite>
 
                                 <span class="testimonial-title">
-                                    Role · Organisation
+                                    Role &middot; Organisation
                                 </span>
 
                             </div>
@@ -1217,7 +1196,7 @@
                         Training &amp; events
                     </a>
 
-                    #enquiry
+                    <a href="#enquiry">
                         Speaking enquiries
                     </a>
 
@@ -1230,11 +1209,11 @@
                         Explore
                     </h3>
 
-                    #about
+                    <a href="#about">
                         About
                     </a>
 
-                    #gallery
+                    <a href="#gallery">
                         From the stage
                     </a>
 
@@ -1242,7 +1221,7 @@
                         Cart
                     </a>
 
-                    #enquiry
+                    <a href="#enquiry">
                         Contact
                     </a>
 
