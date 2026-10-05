@@ -1,110 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
+<!-- =====================================================
+     HEADER
+     Matches the CSS exactly: .site-header is the flex
+     container itself (no extra wrapper div needed), and
+     the toggle button holds a single .nav-toggle-lines
+     span — the ::before/::after on that span draw the
+     other two bars and animate into an X.
+====================================================== -->
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
+<header class="site-header">
+
+    <a href="index.html" class="brand">
+        <span id="business-name">Amani Wanjiru</span>
+    </a>
+
+    <button
+        type="button"
+        id="nav-toggle"
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="main-nav"
+        aria-label="Open navigation"
     >
+        <span class="nav-toggle-lines"></span>
+    </button>
 
-    <title>Amani Wanjiru | Speaker &amp; Executive Coach in Nairobi</title>
+    <nav id="main-nav" class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="catalogue.html">Catalogue</a>
+        <a href="booking.html">Book a session</a>
+        <a href="cart.html">
+            Cart <span id="cart-count">0</span>
+        </a>
+        <a
+            href="https://wa.me/254712345678"
+            class="btn add-to-cart"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            WhatsApp
+        </a>
+    </nav>
 
-    <meta
-        name="description"
-        content="Executive coaching, leadership development, speaking and practical training with Amani Wanjiru in Nairobi and online."
-    >
-
-    <meta name="theme-color" content="#F1EDE4">
-
-    <!-- =====================================================
-         SOCIAL / OPEN GRAPH
-
-         Add these once the production domain and social image
-         are available.
-
-         Example:
-
-         <meta property="og:url"
-               content="https://yourdomain.co.ke/">
-
-         <meta property="og:image"
-               content="https://yourdomain.co.ke/images/amani-social.jpg">
-    ====================================================== -->
-
-    <meta
-        property="og:title"
-        content="Amani Wanjiru | Speaker &amp; Executive Coach"
-    >
-
-    <meta
-        property="og:description"
-        content="Executive coaching, leadership development, speaking and practical training in Nairobi and online."
-    >
-
-    <meta property="og:type" content="website">
-
-    <!-- =====================================================
-         GOOGLE ANALYTICS
-
-         Add your real GA4 measurement ID before production.
-
-         Example:
-
-         <script
-             async
-             src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX">
-         </script>
-    ====================================================== -->
-
-    <!-- =====================================================
-         FONTS
-    ====================================================== -->
-
-    <link
-        rel="preconnect"
-        href="https://fonts.googleapis.com"
-    >
-
-    <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossorigin
-    >
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&amp;family=Inter:wght@400;500;600&amp;display=swap"
-        rel="stylesheet"
-    >
-
-    <!-- =====================================================
-         STYLES
-    ====================================================== -->
-
-    <link
-        rel="stylesheet"
-        href="css/style.css"
-    >
-
-    <!-- =====================================================
-         SITE CONFIGURATION & DATA
-
-         defer waits until the HTML has been parsed before
-         executing the scripts.
-    ====================================================== -->
-
-    <script src="config/business.js" defer></script>
-    <script src="config/branding.js" defer></script>
-
-    <script src="js/products.js" defer></script>
-    <script src="js/events.js" defer></script>
-
-    <script src="js/cart.js" defer></script>
-    <script src="js/storefront.js" defer></script>
-    <script src="js/site.js" defer></script>
-
-</head>
+</header>
 
 
 <body>
