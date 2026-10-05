@@ -14,6 +14,7 @@
     <script src="config/business.js"></script>
     <script src="config/branding.js"></script>
     <script src="js/cart.js"></script>
+    <script src="js/auth.js"></script>
     <script src="js/dashboard.js"></script>
     <script src="js/site.js"></script>
 </head>
@@ -29,6 +30,9 @@
             <a href="booking.html">Book a session</a>
             <a href="dashboard.html">Dashboard</a>
             <a href="cart.html">Cart <span id="cart-count">0</span></a>
+            <button type="button" onclick="adminLogout()" class="btn btn-secondary" style="padding:0.5rem 1rem;">
+                Log out
+            </button>
         </nav>
     </header>
 
@@ -41,7 +45,9 @@
 
         <section class="section">
 
-            <div id="dashboard-stats" class="stat-grid"></div>
+            <div id="dashboard-stats" class="stat-grid">
+                <p style="color:var(--text-muted);">Loading...</p>
+            </div>
 
             <h2>Recent activity</h2>
             <div id="dashboard-activity"></div>
@@ -52,8 +58,7 @@
             <p class="workflow-note">
                 These toggles control which automated messages go out. Actually sending
                 them needs an SMS/WhatsApp provider (e.g. Africa's Talking or the WhatsApp
-                Business API) and a scheduler connected to the backend — this screen is
-                the control panel for that once it's wired up.
+                Business API) and a scheduler connected to the backend.
             </p>
 
         </section>
