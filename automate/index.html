@@ -1,54 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- =====================================================
-     HEADER
-     Matches the CSS exactly: .site-header is the flex
-     container itself (no extra wrapper div needed), and
-     the toggle button holds a single .nav-toggle-lines
-     span — the ::before/::after on that span draw the
-     other two bars and animate into an X.
-====================================================== -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amani Wanjiru | Executive Coaching &amp; Leadership</title>
+    <meta name="description" content="Executive coaching, leadership development, speaking and workshops in Nairobi and online.">
 
-<header class="site-header">
-
-    <a href="index.html" class="brand">
-        <span id="business-name">Amani Wanjiru</span>
-    </a>
-
-    <button
-        type="button"
-        id="nav-toggle"
-        class="nav-toggle"
-        aria-expanded="false"
-        aria-controls="main-nav"
-        aria-label="Open navigation"
-    >
-        <span class="nav-toggle-lines"></span>
-    </button>
-
-    <nav id="main-nav" class="main-nav">
-        <a href="index.html">Home</a>
-        <a href="catalogue.html">Catalogue</a>
-        <a href="booking.html">Book a session</a>
-        <a href="cart.html">
-            Cart <span id="cart-count">0</span>
-        </a>
-        <a
-            href="https://wa.me/254712345678"
-            class="btn add-to-cart"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            WhatsApp
-        </a>
-    </nav>
-
-</header>
-
+    <!-- Change the path if your stylesheet has a different name or folder, e.g. css/style.css -->
+    <link rel="stylesheet" href="style.css">
+</head>
 
 <body>
-
 
     <!-- =====================================================
          ACCESSIBILITY
@@ -62,50 +25,45 @@
     <!-- =====================================================
          HEADER
 
-         Added back in: the JavaScript at the bottom of this
-         file controls a mobile nav toggle via #nav-toggle and
-         #main-nav, but no header existed in the file to hold
-         them. This one matches the pages that actually exist
-         (catalogue.html, booking.html, cart.html).
+         .site-header is the flex container itself (no wrapper),
+         and the toggle holds a single .nav-toggle-lines span.
+         Its ::before/::after draw the other two bars and
+         animate into an X.
     ====================================================== -->
 
     <header class="site-header">
 
-        <div class="header-inner">
+        <a href="index.html" class="brand">
+            <span id="business-name">Amani Wanjiru</span>
+        </a>
 
-            <a href="index.html" class="brand">
-                <span id="business-name">Amani Wanjiru</span>
+        <button
+            type="button"
+            id="nav-toggle"
+            class="nav-toggle"
+            aria-expanded="false"
+            aria-controls="main-nav"
+            aria-label="Open navigation"
+        >
+            <span class="nav-toggle-lines"></span>
+        </button>
+
+        <nav id="main-nav" class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="catalogue.html">Catalogue</a>
+            <a href="booking.html">Book a session</a>
+            <a href="cart.html">
+                Cart <span id="cart-count">0</span>
             </a>
-
-            <button
-                type="button"
-                id="nav-toggle"
-                class="nav-toggle"
-                aria-expanded="false"
-                aria-controls="main-nav"
-                aria-label="Open navigation"
+            <a
+                href="https://wa.me/254712345678"
+                class="btn add-to-cart"
+                target="_blank"
+                rel="noopener noreferrer"
             >
-                <span aria-hidden="true">&#9776;</span>
-            </button>
-
-            <nav id="main-nav" class="main-nav">
-                <a href="index.html">Home</a>
-                <a href="catalogue.html">Catalogue</a>
-                <a href="booking.html">Book a session</a>
-                <a href="cart.html">
-                    Cart <span id="cart-count">0</span>
-                </a>
-                <a
-                    href="https://wa.me/254712345678"
-                    class="btn add-to-cart"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    WhatsApp
-                </a>
-            </nav>
-
-        </div>
+                WhatsApp
+            </a>
+        </nav>
 
     </header>
 
@@ -141,17 +99,11 @@
 
                 <div class="hero-actions">
 
-                    <a
-                        href="catalogue.html"
-                        class="btn btn-primary"
-                    >
+                    <a href="catalogue.html" class="btn btn-primary">
                         Explore programmes
                     </a>
 
-                    <a
-                        href="booking.html"
-                        class="btn btn-secondary"
-                    >
+                    <a href="booking.html" class="btn btn-secondary">
                         Book a session
                     </a>
 
@@ -191,38 +143,19 @@
              TRUST / CREDIBILITY
         ================================================== -->
 
-        <section
-            class="trust-strip"
-            aria-labelledby="trust-heading"
-        >
+        <section class="trust-strip" aria-labelledby="trust-heading">
 
             <div class="trust-strip-inner">
 
-                <p
-                    class="trust-intro"
-                    id="trust-heading"
-                >
+                <p class="trust-intro" id="trust-heading">
                     Leadership development for
                 </p>
 
                 <div class="trust-items">
-
-                    <span class="trust-item">
-                        Individuals
-                    </span>
-
-                    <span class="trust-item">
-                        Teams
-                    </span>
-
-                    <span class="trust-item">
-                        Organisations
-                    </span>
-
-                    <span class="trust-item">
-                        Emerging leaders
-                    </span>
-
+                    <span class="trust-item">Individuals</span>
+                    <span class="trust-item">Teams</span>
+                    <span class="trust-item">Organisations</span>
+                    <span class="trust-item">Emerging leaders</span>
                 </div>
 
             </div>
@@ -234,15 +167,11 @@
              ABOUT AMANI
         ================================================== -->
 
-        <section
-            class="section-band section-band--white"
-            id="about"
-        >
+        <section class="section-band section-band--white" id="about">
 
             <div class="section">
 
                 <div class="about-grid">
-
 
                     <div class="about-media">
 
@@ -263,16 +192,11 @@
 
                     </div>
 
-
                     <div class="about-copy">
 
-                        <span class="eyebrow">
-                            Meet Amani
-                        </span>
+                        <span class="eyebrow">Meet Amani</span>
 
-                        <h2>
-                            Leadership starts with how we communicate
-                        </h2>
+                        <h2>Leadership starts with how we communicate</h2>
 
                         <p>
                             Amani Wanjiru is a Nairobi-based speaker
@@ -288,32 +212,14 @@
                             into action.
                         </p>
 
-
                         <ul class="about-highlights">
-
-                            <li>
-                                Executive and leadership coaching
-                            </li>
-
-                            <li>
-                                Leadership communication
-                            </li>
-
-                            <li>
-                                Team development
-                            </li>
-
-                            <li>
-                                Speaking and facilitated workshops
-                            </li>
-
+                            <li>Executive and leadership coaching</li>
+                            <li>Leadership communication</li>
+                            <li>Team development</li>
+                            <li>Speaking and facilitated workshops</li>
                         </ul>
 
-
-                        <a
-                            href="booking.html"
-                            class="btn btn-secondary"
-                        >
+                        <a href="booking.html" class="btn btn-secondary">
                             Work with Amani
                         </a>
 
@@ -329,8 +235,8 @@
         <!-- =================================================
              FEATURED EVENT
 
-             The temporary event object near the bottom of this
-             file supplies capacity and countdown information.
+             The temporary FEATURED_EVENT object near the bottom
+             of this file supplies capacity and countdown data.
 
              Future improvement:
              Move all of this event data into events.js.
@@ -344,18 +250,15 @@
 
             <div class="featured-event-grid">
 
-
                 <div class="featured-event-copy">
 
                     <span class="featured-event-label">
                         Featured Training
                     </span>
 
-
                     <h2 id="featured-event-title">
                         Leadership Summit 2026
                     </h2>
-
 
                     <p class="featured-event-meta">
 
@@ -377,54 +280,23 @@
                     >
 
                         <div class="countdown-unit">
-
-                            <strong id="cd-days">
-                                --
-                            </strong>
-
-                            <span>
-                                Days
-                            </span>
-
+                            <strong id="cd-days">--</strong>
+                            <span>Days</span>
                         </div>
 
-
                         <div class="countdown-unit">
-
-                            <strong id="cd-hours">
-                                --
-                            </strong>
-
-                            <span>
-                                Hrs
-                            </span>
-
+                            <strong id="cd-hours">--</strong>
+                            <span>Hrs</span>
                         </div>
 
-
                         <div class="countdown-unit">
-
-                            <strong id="cd-mins">
-                                --
-                            </strong>
-
-                            <span>
-                                Mins
-                            </span>
-
+                            <strong id="cd-mins">--</strong>
+                            <span>Mins</span>
                         </div>
 
-
                         <div class="countdown-unit">
-
-                            <strong id="cd-secs">
-                                --
-                            </strong>
-
-                            <span>
-                                Secs
-                            </span>
-
+                            <strong id="cd-secs">--</strong>
+                            <span>Secs</span>
                         </div>
 
                     </div>
@@ -437,37 +309,24 @@
                         id="featured-event-ended"
                         hidden
                     >
-
-                        <strong>
-                            This event has ended.
-                        </strong>
-
-                        <p>
-                            Explore upcoming training and events.
-                        </p>
-
+                        <strong>This event has ended.</strong>
+                        <p>Explore upcoming training and events.</p>
                     </div>
 
 
                     <!-- Availability -->
 
-                    <div
-                        class="featured-seats"
-                        id="featured-event-capacity"
-                    >
+                    <div class="featured-seats" id="featured-event-capacity">
 
                         <div class="featured-seats-label">
 
-                            <span>
-                                Seats reserved
-                            </span>
+                            <span>Seats reserved</span>
 
                             <strong id="featured-seats-text">
                                 78% full &middot; 22 seats remaining
                             </strong>
 
                         </div>
-
 
                         <div
                             class="featured-seats-bar"
@@ -492,23 +351,10 @@
 
                     <!-- Pricing -->
 
-                    <div
-                        class="featured-event-price"
-                        id="featured-event-price"
-                    >
-
-                        <span class="price-old">
-                            KES 5,000
-                        </span>
-
-                        <span class="price-new">
-                            KES 3,500
-                        </span>
-
-                        <span class="price-tag">
-                            Early bird
-                        </span>
-
+                    <div class="featured-event-price" id="featured-event-price">
+                        <span class="price-old">KES 5,000</span>
+                        <span class="price-new">KES 3,500</span>
+                        <span class="price-tag">Early bird</span>
                     </div>
 
 
@@ -554,13 +400,9 @@
 
                     <div class="section-heading-copy">
 
-                        <span class="eyebrow">
-                            Work with Amani
-                        </span>
+                        <span class="eyebrow">Work with Amani</span>
 
-                        <h2>
-                            Coaching, courses &amp; training
-                        </h2>
+                        <h2>Coaching, courses &amp; training</h2>
 
                         <p>
                             Choose individual support, practical
@@ -570,23 +412,15 @@
 
                     </div>
 
-
-                    <a
-                        href="catalogue.html"
-                        class="section-link"
-                    >
+                    <a href="catalogue.html" class="section-link">
                         View all programmes
                     </a>
 
                 </div>
 
-
                 <!-- Populated by storefront.js -->
 
-                <div
-                    id="featured-product-grid"
-                    class="product-grid"
-                ></div>
+                <div id="featured-product-grid" class="product-grid"></div>
 
             </div>
 
@@ -600,10 +434,7 @@
              testimonials before publishing.
         ================================================== -->
 
-        <section
-            class="section-band section-band--paper"
-            id="testimonials"
-        >
+        <section class="section-band section-band--paper" id="testimonials">
 
             <div class="section">
 
@@ -611,13 +442,9 @@
 
                     <div class="section-heading-copy">
 
-                        <span class="eyebrow">
-                            Client experiences
-                        </span>
+                        <span class="eyebrow">Client experiences</span>
 
-                        <h2>
-                            What clients say
-                        </h2>
+                        <h2>What clients say</h2>
 
                         <p>
                             Reflections from people and teams who
@@ -628,105 +455,47 @@
 
                 </div>
 
-
                 <div class="testimonial-grid">
 
-
                     <blockquote class="testimonial-card">
-
-                        <span
-                            class="testimonial-mark"
-                            aria-hidden="true"
-                        >
-                            &ldquo;
-                        </span>
-
+                        <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
                         <p class="testimonial-quote">
                             Add a genuine client testimonial here.
                         </p>
-
                         <footer class="testimonial-author">
-
                             <div>
-
-                                <cite>
-                                    Client name
-                                </cite>
-
-                                <span class="testimonial-title">
-                                    Role &middot; Organisation
-                                </span>
-
+                                <cite>Client name</cite>
+                                <span class="testimonial-title">Role &middot; Organisation</span>
                             </div>
-
                         </footer>
-
                     </blockquote>
 
-
                     <blockquote class="testimonial-card">
-
-                        <span
-                            class="testimonial-mark"
-                            aria-hidden="true"
-                        >
-                            &ldquo;
-                        </span>
-
+                        <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
                         <p class="testimonial-quote">
                             Add a genuine coaching or leadership
                             programme testimonial here.
                         </p>
-
                         <footer class="testimonial-author">
-
                             <div>
-
-                                <cite>
-                                    Client name
-                                </cite>
-
-                                <span class="testimonial-title">
-                                    Role &middot; Organisation
-                                </span>
-
+                                <cite>Client name</cite>
+                                <span class="testimonial-title">Role &middot; Organisation</span>
                             </div>
-
                         </footer>
-
                     </blockquote>
 
-
                     <blockquote class="testimonial-card">
-
-                        <span
-                            class="testimonial-mark"
-                            aria-hidden="true"
-                        >
-                            &ldquo;
-                        </span>
-
+                        <span class="testimonial-mark" aria-hidden="true">&ldquo;</span>
                         <p class="testimonial-quote">
                             Add a genuine workshop, speaking or
                             corporate client testimonial here.
                         </p>
-
                         <footer class="testimonial-author">
-
                             <div>
-
-                                <cite>
-                                    Client name
-                                </cite>
-
-                                <span class="testimonial-title">
-                                    Role &middot; Organisation
-                                </span>
-
+                                <cite>Client name</cite>
+                                <span class="testimonial-title">Role &middot; Organisation</span>
                             </div>
-
                         </footer>
-
                     </blockquote>
 
                 </div>
@@ -740,10 +509,7 @@
              FROM THE STAGE
         ================================================== -->
 
-        <section
-            class="section-band section-band--white"
-            id="gallery"
-        >
+        <section class="section-band section-band--white" id="gallery">
 
             <div class="section">
 
@@ -751,13 +517,9 @@
 
                     <div class="section-heading-copy">
 
-                        <span class="eyebrow">
-                            Speaking &amp; facilitation
-                        </span>
+                        <span class="eyebrow">Speaking &amp; facilitation</span>
 
-                        <h2>
-                            From the stage
-                        </h2>
+                        <h2>From the stage</h2>
 
                         <p>
                             Conversations, workshops and learning
@@ -768,12 +530,9 @@
 
                 </div>
 
-
                 <div class="gallery-grid">
 
-
                     <figure class="gallery-item">
-
                         <img
                             src="https://picsum.photos/seed/amanistage1/700/900"
                             alt="Speaker giving a keynote"
@@ -781,16 +540,10 @@
                             height="900"
                             loading="lazy"
                         >
-
-                        <figcaption>
-                            Opening keynote
-                        </figcaption>
-
+                        <figcaption>Opening keynote</figcaption>
                     </figure>
 
-
                     <figure class="gallery-item">
-
                         <img
                             src="https://picsum.photos/seed/amanistage2/700/900"
                             alt="Leadership workshop session"
@@ -798,16 +551,10 @@
                             height="900"
                             loading="lazy"
                         >
-
-                        <figcaption>
-                            Workshop session
-                        </figcaption>
-
+                        <figcaption>Workshop session</figcaption>
                     </figure>
 
-
                     <figure class="gallery-item">
-
                         <img
                             src="https://picsum.photos/seed/amanistage3/700/900"
                             alt="Discussion with workshop participants"
@@ -815,11 +562,7 @@
                             height="900"
                             loading="lazy"
                         >
-
-                        <figcaption>
-                            Conversation with participants
-                        </figcaption>
-
+                        <figcaption>Conversation with participants</figcaption>
                     </figure>
 
                 </div>
@@ -833,25 +576,17 @@
              ENQUIRY
         ================================================== -->
 
-        <section
-            class="section-band section-band--paper"
-            id="enquiry"
-        >
+        <section class="section-band section-band--paper" id="enquiry">
 
             <div class="section">
 
                 <div class="enquiry-layout">
 
-
                     <div class="enquiry-copy">
 
-                        <span class="eyebrow">
-                            Start a conversation
-                        </span>
+                        <span class="eyebrow">Start a conversation</span>
 
-                        <h2>
-                            Have a question first?
-                        </h2>
+                        <h2>Have a question first?</h2>
 
                         <p>
                             Tell us briefly what you are looking for.
@@ -859,13 +594,9 @@
                             one business day.
                         </p>
 
-
                         <div class="quick-actions">
 
-                            <a
-                                href="booking.html"
-                                class="btn btn-secondary"
-                            >
+                            <a href="booking.html" class="btn btn-secondary">
                                 Book a session
                             </a>
 
@@ -885,18 +616,10 @@
                     </div>
 
 
-                    <form
-                        id="enquiry-form"
-                        class="checkout-form-container"
-                    >
-
+                    <form id="enquiry-form" class="checkout-form-container">
 
                         <div class="form-group">
-
-                            <label for="enquiry-name">
-                                Full name
-                            </label>
-
+                            <label for="enquiry-name">Full name</label>
                             <input
                                 type="text"
                                 id="enquiry-name"
@@ -904,32 +627,20 @@
                                 autocomplete="name"
                                 required
                             >
-
                         </div>
 
-
                         <div class="form-group">
-
-                            <label for="enquiry-email">
-                                Email address
-                            </label>
-
+                            <label for="enquiry-email">Email address</label>
                             <input
                                 type="email"
                                 id="enquiry-email"
                                 name="email"
                                 autocomplete="email"
                             >
-
                         </div>
 
-
                         <div class="form-group">
-
-                            <label for="enquiry-phone">
-                                Phone number
-                            </label>
-
+                            <label for="enquiry-phone">Phone number</label>
                             <input
                                 type="tel"
                                 id="enquiry-phone"
@@ -938,61 +649,23 @@
                                 placeholder="07XXXXXXXX"
                                 required
                             >
-
                         </div>
 
-
                         <div class="form-group">
-
-                            <label for="enquiry-interest">
-                                I am interested in
-                            </label>
-
-                            <select
-                                id="enquiry-interest"
-                                name="interest"
-                                required
-                            >
-
-                                <option value="">
-                                    Choose an option
-                                </option>
-
-                                <option value="executive-coaching">
-                                    Executive coaching
-                                </option>
-
-                                <option value="team-training">
-                                    Team training
-                                </option>
-
-                                <option value="speaking">
-                                    Speaking engagement
-                                </option>
-
-                                <option value="course">
-                                    Course or programme
-                                </option>
-
-                                <option value="event">
-                                    Training event
-                                </option>
-
-                                <option value="other">
-                                    Something else
-                                </option>
-
+                            <label for="enquiry-interest">I am interested in</label>
+                            <select id="enquiry-interest" name="interest" required>
+                                <option value="">Choose an option</option>
+                                <option value="executive-coaching">Executive coaching</option>
+                                <option value="team-training">Team training</option>
+                                <option value="speaking">Speaking engagement</option>
+                                <option value="course">Course or programme</option>
+                                <option value="event">Training event</option>
+                                <option value="other">Something else</option>
                             </select>
-
                         </div>
 
-
                         <div class="form-group">
-
-                            <label for="enquiry-message">
-                                How can we help?
-                            </label>
-
+                            <label for="enquiry-message">How can we help?</label>
                             <textarea
                                 id="enquiry-message"
                                 name="message"
@@ -1000,9 +673,7 @@
                                 placeholder="Tell us briefly what you are looking for."
                                 required
                             ></textarea>
-
                         </div>
-
 
                         <button
                             type="submit"
@@ -1012,12 +683,10 @@
                             Send enquiry
                         </button>
 
-
                         <p class="enquiry-note">
                             Your contact details will only be used
                             to respond to this enquiry.
                         </p>
-
 
                         <div
                             id="enquiry-status"
@@ -1046,16 +715,11 @@
 
                 <div>
 
-                    <span
-                        class="eyebrow"
-                        style="color: var(--gold);"
-                    >
+                    <span class="eyebrow" style="color: var(--gold);">
                         Take the next step
                     </span>
 
-                    <h2>
-                        Ready to lead with greater clarity?
-                    </h2>
+                    <h2>Ready to lead with greater clarity?</h2>
 
                     <p>
                         Start with a coaching conversation or explore
@@ -1064,20 +728,13 @@
 
                 </div>
 
-
                 <div class="final-cta-actions">
 
-                    <a
-                        href="booking.html"
-                        class="btn btn-light"
-                    >
+                    <a href="booking.html" class="btn btn-light">
                         Book a session
                     </a>
 
-                    <a
-                        href="catalogue.html"
-                        class="btn btn-light"
-                    >
+                    <a href="catalogue.html" class="btn btn-light">
                         Explore programmes
                     </a>
 
@@ -1100,13 +757,9 @@
 
             <div class="footer-grid">
 
-
                 <div>
 
-                    <div
-                        class="footer-brand"
-                        id="footer-business-name"
-                    >
+                    <div class="footer-brand" id="footer-business-name">
                         Amani Wanjiru
                     </div>
 
@@ -1117,62 +770,31 @@
 
                 </div>
 
-
                 <div class="footer-column">
 
-                    <h3>
-                        Work with Amani
-                    </h3>
+                    <h3>Work with Amani</h3>
 
-                    <a href="booking.html">
-                        Executive coaching
-                    </a>
-
-                    <a href="catalogue.html">
-                        Programmes
-                    </a>
-
-                    <a href="catalogue.html#events">
-                        Training &amp; events
-                    </a>
-
-                    <a href="#enquiry">
-                        Speaking enquiries
-                    </a>
+                    <a href="booking.html">Executive coaching</a>
+                    <a href="catalogue.html">Programmes</a>
+                    <a href="catalogue.html#events">Training &amp; events</a>
+                    <a href="#enquiry">Speaking enquiries</a>
 
                 </div>
 
-
                 <div class="footer-column">
 
-                    <h3>
-                        Explore
-                    </h3>
+                    <h3>Explore</h3>
 
-                    <a href="#about">
-                        About
-                    </a>
-
-                    <a href="#gallery">
-                        From the stage
-                    </a>
-
-                    <a href="cart.html">
-                        Cart
-                    </a>
-
-                    <a href="#enquiry">
-                        Contact
-                    </a>
+                    <a href="#about">About</a>
+                    <a href="#gallery">From the stage</a>
+                    <a href="cart.html">Cart</a>
+                    <a href="#enquiry">Contact</a>
 
                 </div>
 
-
                 <div class="footer-column">
 
-                    <h3>
-                        Connect
-                    </h3>
+                    <h3>Connect</h3>
 
                     <a
                         href="https://wa.me/254712345678"
@@ -1185,45 +807,25 @@
                     <!--
                         Add verified social URLs here later:
 
-                        <a
-                            href="YOUR-LINKEDIN-URL"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            LinkedIn
-                        </a>
-
-                        <a
-                            href="YOUR-INSTAGRAM-URL"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Instagram
-                        </a>
+                        <a href="YOUR-LINKEDIN-URL" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="YOUR-INSTAGRAM-URL" target="_blank" rel="noopener noreferrer">Instagram</a>
                     -->
 
-                    <span>
-                        Nairobi, Kenya
-                    </span>
+                    <span>Nairobi, Kenya</span>
 
                 </div>
 
             </div>
 
-
             <div class="footer-bottom">
 
                 <p>
                     &copy;
-                    <span id="footer-year">
-                        2026
-                    </span>
+                    <span id="footer-year">2026</span>
                     Amani Wanjiru. All rights reserved.
                 </p>
 
-                <p>
-                    Nairobi, Kenya
-                </p>
+                <p>Nairobi, Kenya</p>
 
             </div>
 
@@ -1251,6 +853,17 @@
 
 
     <!-- =====================================================
+         SHARED STOREFRONT SCRIPT
+
+         Populates #featured-product-grid and (if it handles
+         them) the cart count. Remove this line if the file
+         does not exist yet.
+    ====================================================== -->
+
+    <script src="storefront.js"></script>
+
+
+    <!-- =====================================================
          PAGE-SPECIFIC JAVASCRIPT
     ====================================================== -->
 
@@ -1260,116 +873,53 @@
            MOBILE NAVIGATION
         ====================================================== */
 
-        const navToggle =
-            document.getElementById("nav-toggle");
+        const navToggle = document.getElementById("nav-toggle");
+        const mainNav = document.getElementById("main-nav");
 
-        const mainNav =
-            document.getElementById("main-nav");
+
+        function closeNav() {
+
+            navToggle.setAttribute("aria-expanded", "false");
+            navToggle.setAttribute("aria-label", "Open navigation");
+            mainNav.classList.remove("is-open");
+            document.body.classList.remove("menu-open");
+
+        }
 
 
         if (navToggle && mainNav) {
 
-            navToggle.addEventListener(
-                "click",
-                function () {
+            navToggle.addEventListener("click", function () {
 
-                    const isOpen =
-                        navToggle.getAttribute(
-                            "aria-expanded"
-                        ) === "true";
+                const isOpen =
+                    navToggle.getAttribute("aria-expanded") === "true";
 
+                navToggle.setAttribute("aria-expanded", String(!isOpen));
 
-                    navToggle.setAttribute(
-                        "aria-expanded",
-                        String(!isOpen)
-                    );
+                navToggle.setAttribute(
+                    "aria-label",
+                    isOpen ? "Open navigation" : "Close navigation"
+                );
 
+                mainNav.classList.toggle("is-open", !isOpen);
+                document.body.classList.toggle("menu-open", !isOpen);
 
-                    navToggle.setAttribute(
-                        "aria-label",
-                        isOpen
-                            ? "Open navigation"
-                            : "Close navigation"
-                    );
+            });
 
 
-                    mainNav.classList.toggle(
-                        "is-open",
-                        !isOpen
-                    );
+            mainNav.querySelectorAll("a").forEach(function (link) {
+                link.addEventListener("click", closeNav);
+            });
 
 
-                    document.body.classList.toggle(
-                        "menu-open",
-                        !isOpen
-                    );
+            document.addEventListener("keydown", function (event) {
 
+                if (event.key === "Escape") {
+                    closeNav();
+                    navToggle.focus();
                 }
-            );
 
-
-            mainNav
-                .querySelectorAll("a")
-                .forEach(function (link) {
-
-                    link.addEventListener(
-                        "click",
-                        function () {
-
-                            navToggle.setAttribute(
-                                "aria-expanded",
-                                "false"
-                            );
-
-                            navToggle.setAttribute(
-                                "aria-label",
-                                "Open navigation"
-                            );
-
-                            mainNav.classList.remove(
-                                "is-open"
-                            );
-
-                            document.body.classList.remove(
-                                "menu-open"
-                            );
-
-                        }
-                    );
-
-                });
-
-
-            document.addEventListener(
-                "keydown",
-                function (event) {
-
-                    if (event.key === "Escape") {
-
-                        navToggle.setAttribute(
-                            "aria-expanded",
-                            "false"
-                        );
-
-                        navToggle.setAttribute(
-                            "aria-label",
-                            "Open navigation"
-                        );
-
-                        mainNav.classList.remove(
-                            "is-open"
-                        );
-
-                        document.body.classList.remove(
-                            "menu-open"
-                        );
-
-                        navToggle.focus();
-
-                    }
-
-                }
-            );
+            });
 
         }
 
@@ -1378,15 +928,10 @@
            FOOTER YEAR
         ====================================================== */
 
-        const footerYear =
-            document.getElementById("footer-year");
-
+        const footerYear = document.getElementById("footer-year");
 
         if (footerYear) {
-
-            footerYear.textContent =
-                new Date().getFullYear();
-
+            footerYear.textContent = new Date().getFullYear();
         }
 
 
@@ -1397,26 +942,15 @@
         ====================================================== */
 
         const FEATURED_EVENT = {
-
             id: "evt-leadership-summit",
-
             date: "2026-10-14T09:00:00+03:00",
-
             capacity: 100,
-
             booked: 78,
-
             standardPrice: 5000,
-
             currentPrice: 3500
-
         };
 
-
-        const EVENT_DATE =
-            new Date(
-                FEATURED_EVENT.date
-            ).getTime();
+        const EVENT_DATE = new Date(FEATURED_EVENT.date).getTime();
 
 
         /* =====================================================
@@ -1425,83 +959,41 @@
 
         function updateFeaturedCapacity() {
 
-            const capacity =
-                FEATURED_EVENT.capacity;
+            const capacity = FEATURED_EVENT.capacity;
 
-            const booked =
-                Math.min(
-                    FEATURED_EVENT.booked,
-                    capacity
-                );
+            const booked = Math.min(FEATURED_EVENT.booked, capacity);
 
-            const remaining =
-                Math.max(
-                    capacity - booked,
-                    0
-                );
+            const remaining = Math.max(capacity - booked, 0);
 
             const percentage =
                 capacity > 0
-                    ? Math.round(
-                        (booked / capacity) * 100
-                    )
+                    ? Math.round((booked / capacity) * 100)
                     : 0;
 
-
-            const seatsText =
-                document.getElementById(
-                    "featured-seats-text"
-                );
-
-            const seatsFill =
-                document.getElementById(
-                    "featured-seats-fill"
-                );
-
-            const progress =
-                document.getElementById(
-                    "featured-seats-progress"
-                );
+            const seatsText = document.getElementById("featured-seats-text");
+            const seatsFill = document.getElementById("featured-seats-fill");
+            const progress = document.getElementById("featured-seats-progress");
 
 
             if (seatsText) {
 
                 seatsText.textContent =
-                    percentage +
-                    "% full · " +
-                    remaining +
-                    (
-                        remaining === 1
-                            ? " seat remaining"
-                            : " seats remaining"
-                    );
+                    percentage + "% full · " + remaining +
+                    (remaining === 1 ? " seat remaining" : " seats remaining");
 
             }
-
 
             if (seatsFill) {
-
-                seatsFill.style.setProperty(
-                    "--event-fill",
-                    percentage + "%"
-                );
-
+                seatsFill.style.setProperty("--event-fill", percentage + "%");
             }
-
 
             if (progress) {
 
-                progress.setAttribute(
-                    "aria-valuenow",
-                    String(percentage)
-                );
+                progress.setAttribute("aria-valuenow", String(percentage));
 
                 progress.setAttribute(
                     "aria-valuetext",
-                    percentage +
-                    "% full, " +
-                    remaining +
-                    " seats remaining"
+                    percentage + "% full, " + remaining + " seats remaining"
                 );
 
             }
@@ -1515,69 +1007,27 @@
 
         function updateFeaturedCountdown() {
 
-            const now =
-                Date.now();
+            const difference = EVENT_DATE - Date.now();
 
-            const difference =
-                EVENT_DATE - now;
-
-
-            const countdown =
-                document.getElementById(
-                    "featured-countdown"
-                );
-
-            const endedMessage =
-                document.getElementById(
-                    "featured-event-ended"
-                );
-
-            const capacity =
-                document.getElementById(
-                    "featured-event-capacity"
-                );
-
-            const price =
-                document.getElementById(
-                    "featured-event-price"
-                );
-
-            const cta =
-                document.getElementById(
-                    "featured-event-cta"
-                );
+            const countdown = document.getElementById("featured-countdown");
+            const endedMessage = document.getElementById("featured-event-ended");
+            const capacity = document.getElementById("featured-event-capacity");
+            const price = document.getElementById("featured-event-price");
+            const cta = document.getElementById("featured-event-cta");
 
 
-            /*
-             * Event has started or passed.
-             */
+            /* Event has started or passed. */
 
             if (difference <= 0) {
 
-                if (countdown) {
-                    countdown.hidden = true;
-                }
-
-                if (endedMessage) {
-                    endedMessage.hidden = false;
-                }
-
-                if (capacity) {
-                    capacity.hidden = true;
-                }
-
-                if (price) {
-                    price.hidden = true;
-                }
+                if (countdown) { countdown.hidden = true; }
+                if (endedMessage) { endedMessage.hidden = false; }
+                if (capacity) { capacity.hidden = true; }
+                if (price) { price.hidden = true; }
 
                 if (cta) {
-
-                    cta.textContent =
-                        "View upcoming events";
-
-                    cta.href =
-                        "catalogue.html#events";
-
+                    cta.textContent = "View upcoming events";
+                    cta.href = "catalogue.html#events";
                 }
 
                 return;
@@ -1585,100 +1035,20 @@
             }
 
 
-            const days =
-                Math.floor(
-                    difference /
-                    (1000 * 60 * 60 * 24)
-                );
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
+            const mins = Math.floor((difference / (1000 * 60)) % 60);
+            const secs = Math.floor((difference / 1000) % 60);
 
+            const daysElement = document.getElementById("cd-days");
+            const hoursElement = document.getElementById("cd-hours");
+            const minsElement = document.getElementById("cd-mins");
+            const secsElement = document.getElementById("cd-secs");
 
-            const hours =
-                Math.floor(
-                    (
-                        difference /
-                        (1000 * 60 * 60)
-                    ) % 24
-                );
-
-
-            const mins =
-                Math.floor(
-                    (
-                        difference /
-                        (1000 * 60)
-                    ) % 60
-                );
-
-
-            const secs =
-                Math.floor(
-                    (
-                        difference /
-                        1000
-                    ) % 60
-                );
-
-
-            const daysElement =
-                document.getElementById(
-                    "cd-days"
-                );
-
-            const hoursElement =
-                document.getElementById(
-                    "cd-hours"
-                );
-
-            const minsElement =
-                document.getElementById(
-                    "cd-mins"
-                );
-
-            const secsElement =
-                document.getElementById(
-                    "cd-secs"
-                );
-
-
-            if (daysElement) {
-
-                daysElement.textContent =
-                    String(days);
-
-            }
-
-
-            if (hoursElement) {
-
-                hoursElement.textContent =
-                    String(hours).padStart(
-                        2,
-                        "0"
-                    );
-
-            }
-
-
-            if (minsElement) {
-
-                minsElement.textContent =
-                    String(mins).padStart(
-                        2,
-                        "0"
-                    );
-
-            }
-
-
-            if (secsElement) {
-
-                secsElement.textContent =
-                    String(secs).padStart(
-                        2,
-                        "0"
-                    );
-
-            }
+            if (daysElement) { daysElement.textContent = String(days); }
+            if (hoursElement) { hoursElement.textContent = String(hours).padStart(2, "0"); }
+            if (minsElement) { minsElement.textContent = String(mins).padStart(2, "0"); }
+            if (secsElement) { secsElement.textContent = String(secs).padStart(2, "0"); }
 
         }
 
@@ -1686,15 +1056,9 @@
         updateFeaturedCapacity();
         updateFeaturedCountdown();
 
+        /* Update once per second. */
 
-        /*
-         * Update once per second.
-         */
-
-        window.setInterval(
-            updateFeaturedCountdown,
-            1000
-        );
+        window.setInterval(updateFeaturedCountdown, 1000);
 
 
         /* =====================================================
@@ -1707,49 +1071,29 @@
            enquiry was successfully delivered.
         ====================================================== */
 
-        const enquiryForm =
-            document.getElementById(
-                "enquiry-form"
-            );
-
-        const enquiryStatus =
-            document.getElementById(
-                "enquiry-status"
-            );
-
-        const enquirySubmit =
-            document.getElementById(
-                "enquiry-submit"
-            );
+        const enquiryForm = document.getElementById("enquiry-form");
+        const enquiryStatus = document.getElementById("enquiry-status");
+        const enquirySubmit = document.getElementById("enquiry-submit");
 
 
         if (enquiryForm) {
 
-            enquiryForm.addEventListener(
-                "submit",
-                function (event) {
+            enquiryForm.addEventListener("submit", function (event) {
 
-                    event.preventDefault();
+                event.preventDefault();
 
+                if (enquiryStatus && enquirySubmit) {
 
-                    if (
-                        enquiryStatus &&
-                        enquirySubmit
-                    ) {
+                    enquiryStatus.hidden = false;
 
-                        enquiryStatus.hidden =
-                            false;
+                    enquiryStatus.className = "form-status error";
 
-                        enquiryStatus.className =
-                            "form-status error";
-
-                        enquiryStatus.textContent =
-                            "Demo mode: this enquiry has not been submitted yet. Please use WhatsApp until the enquiry service is connected.";
-
-                    }
+                    enquiryStatus.textContent =
+                        "Demo mode: this enquiry has not been submitted yet. Please use WhatsApp until the enquiry service is connected.";
 
                 }
-            );
+
+            });
 
         }
 
